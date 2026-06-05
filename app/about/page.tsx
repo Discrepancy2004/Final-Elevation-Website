@@ -15,14 +15,19 @@ import {
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
 
-const EXPERTISE = [
-  "Manual and exploratory testing",
-  "Automation framework design and implementation",
-  "Mobile, web, API, and enterprise application testing",
-  "Non-functional testing (performance, security, scalability)",
-  "ETL and data validation testing",
-  "Accessibility and compliance testing",
-  "AI-assisted test design and optimization",
+const EXPERTISE_PILLARS = [
+  {
+    title: "Functional & platform coverage",
+    body: "Manual and exploratory testing across mobile, web, API, and enterprise applications. We validate real user journeys with the depth that experienced testers bring to every release.",
+  },
+  {
+    title: "Automation & non-functional quality",
+    body: "Automation framework design and implementation, combined with performance, security, and scalability testing. Your stack stays fast, resilient, and ready for production load.",
+  },
+  {
+    title: "Data, accessibility & AI",
+    body: "ETL and data validation, accessibility and compliance alignment, and AI-assisted test design that extends coverage while keeping human judgment at the center.",
+  },
 ]
 
 const APPROACH = [
@@ -145,50 +150,54 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Expertise — flowing list, not cards */}
+      {/* Expertise — thematic prose columns */}
       <section className='bg-neutral-50 py-24 lg:py-32'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
-          <div className='grid gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-24'>
-            <Reveal className='lg:sticky lg:top-28 lg:self-start'>
-              <h2 className='text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl'>
-                Our{" "}
-                <span className='block font-light text-emerald-800'>
-                  Expertise
-                </span>
-              </h2>
-              <p className='mt-6 max-w-md text-base leading-relaxed text-neutral-600 md:text-lg md:font-light'>
-                End-to-end testing services spanning manual craft, automation,
-                data, accessibility, and AI-assisted quality engineering.
-              </p>
-            </Reveal>
+          <Reveal className='mx-auto mb-16 max-w-3xl text-center lg:mb-20'>
+            <h2 className='text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl'>
+              Our{" "}
+              <span className='font-light text-emerald-800'>Expertise</span>
+            </h2>
+            <p className='mt-6 text-lg font-light leading-relaxed text-neutral-600 md:text-xl'>
+              End-to-end testing services spanning manual craft, automation,
+              data, accessibility, and AI-assisted quality engineering.
+            </p>
+          </Reveal>
 
-            <div>
-              <RevealStagger
-                className='divide-y divide-neutral-200/90 border-y border-neutral-200/90'
-                stagger={0.05}
+          <RevealStagger
+            className='grid gap-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-10'
+            stagger={0.08}
+          >
+            {EXPERTISE_PILLARS.map((pillar, idx) => (
+              <RevealItem
+                key={pillar.title}
+                className={cn(
+                  "relative pt-8",
+                  idx > 0 && "md:border-l md:border-neutral-200/80 md:pl-10",
+                  idx === 2 && "md:col-span-2 lg:col-span-1"
+                )}
               >
-                {EXPERTISE.map((item) => (
-                  <RevealItem key={item}>
-                    <p className='flex gap-5 py-5 text-base leading-relaxed text-neutral-700 md:py-6 md:text-lg md:font-light'>
-                      <span
-                        className='mt-2.5 h-2 w-2 shrink-0 rounded-full bg-emerald-600'
-                        aria-hidden
-                      />
-                      {item}
-                    </p>
-                  </RevealItem>
-                ))}
-              </RevealStagger>
-
-              <Reveal delay={0.1} className='mt-12 border-t border-emerald-200/70 pt-10'>
-                <p className='max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg md:font-light'>
-                  We also specialize in creating robust test strategies, test
-                  plans, scenarios, and test cases, aligned with business goals
-                  and modern delivery models.
+                <span
+                  className='absolute top-0 left-0 h-px w-12 bg-emerald-600 md:left-10 md:w-10 lg:left-0'
+                  aria-hidden
+                />
+                <h3 className='text-xl font-extrabold leading-snug text-emerald-900 md:text-2xl'>
+                  {pillar.title}
+                </h3>
+                <p className='mt-4 text-base leading-relaxed text-neutral-600 md:text-lg md:font-light'>
+                  {pillar.body}
                 </p>
-              </Reveal>
-            </div>
-          </div>
+              </RevealItem>
+            ))}
+          </RevealStagger>
+
+          <Reveal className='mx-auto mt-16 max-w-3xl border-t border-emerald-200/70 pt-12 text-center lg:mt-20'>
+            <p className='text-lg font-light leading-relaxed text-neutral-600 md:text-xl'>
+              We also specialize in creating robust test strategies, test plans,
+              scenarios, and test cases, aligned with business goals and modern
+              delivery models.
+            </p>
+          </Reveal>
         </div>
       </section>
 
