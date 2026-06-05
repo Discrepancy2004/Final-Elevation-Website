@@ -9,6 +9,7 @@ import {
 } from "motion/react"
 
 import React, { useRef, useState } from "react"
+import Link from "next/link"
 
 interface NavbarProps {
   children: React.ReactNode
@@ -253,20 +254,19 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href='#'
-      className='relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black'
+    <Link
+      href="/"
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src='https://assets.aceternity.com/logo-dark.png'
-        alt='logo'
-        width={30}
-        height={30}
+        src="/images/elevation-logo-green.png?v=2"
+        alt="Elevation Software"
+        className="h-12 w-auto shrink-0 md:h-14"
       />
-      <span className='font-medium text-black dark:text-white'>
+      <span className="font-medium text-black dark:text-white">
         Elevation Software
       </span>
-    </a>
+    </Link>
   )
 }
 

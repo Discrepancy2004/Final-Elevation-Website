@@ -13,7 +13,7 @@ import {
   Phone,
   MapPin,
   Clock,
-  Users,
+  Check,
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { NavbarDemo } from "@/components/ui/navbar"
@@ -51,43 +51,11 @@ const FAQ_ITEMS = [
   },
 ]
 
-const CONNECT_CHANNELS = [
-  {
-    icon: Phone,
-    title: "Phone Support",
-    description: "Speak directly with our QA experts",
-    primary: "+1 (555) 123-4567",
-    secondary: "Mon-Fri: 9AM-6PM PST",
-  },
-  {
-    icon: Mail,
-    title: "Email Support",
-    description: "Detailed inquiries and documentation",
-    primary: "info@qualitypro.com",
-    secondary: "24-hour response time",
-  },
-  {
-    icon: Users,
-    title: "Video Consultation",
-    description: "Face-to-face project discussions",
-    primary: "Schedule Online",
-    secondary: "30-60 minute sessions",
-  },
-  {
-    icon: Clock,
-    title: "Emergency Support",
-    description: "Critical issue resolution",
-    primary: "24/7 Hotline",
-    secondary: "Enterprise clients only",
-  },
-]
-
 const WHY_CHOOSE = [
-  "24-hour response time guarantee",
-  "Free initial consultation",
-  "Flexible engagement models",
-  "Experienced QA professionals",
-  "Proven track record",
+  "25+ years of QA and testing expertise",
+  "Flexible and scalable engagement models",
+  "Strong focus on quality, reliability, and speed",
+  "Experience across all platforms and domains",
 ]
 
 export default function ContactPage() {
@@ -134,59 +102,60 @@ export default function ContactPage() {
           </div>
 
           <div className="mx-auto grid max-w-5xl justify-items-center gap-8 md:grid-cols-2">
-            <Card className="w-full max-w-lg border-neutral-200 bg-white shadow-sm">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl font-bold text-neutral-900">
-                  Contact Information
+            <Card className="w-full max-w-lg overflow-hidden border-emerald-200/80 bg-white shadow-sm">
+              <CardHeader className="border-b border-emerald-100 bg-emerald-50/70 text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-800">
+                  Get in touch
+                </p>
+                <CardTitle className="mt-2 text-3xl font-bold text-neutral-900">
+                  Contact{" "}
+                  <span className="font-light text-emerald-800">Information</span>
                 </CardTitle>
-                <CardDescription className="text-base font-normal text-neutral-600">
+                <CardDescription className="text-lg font-normal text-neutral-600">
                   Reach out to us directly through any of these channels.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="divide-y divide-emerald-100/80 px-6 pt-2 pb-6">
                 {[
                   {
                     icon: Mail,
                     label: "Email",
-                    lines: ["info@qualitypro.com", "sales@qualitypro.com"],
+                    lines: ["hello@elevationsoftwaresolutions.com.au"],
                   },
                   {
                     icon: Phone,
                     label: "Phone",
-                    lines: ["+1 (555) 123-4567", "+1 (555) 123-4568"],
+                    lines: ["+1 (555) 123-4567"],
                   },
                   {
                     icon: MapPin,
-                    label: "Office",
-                    lines: [
-                      "123 Tech Street, Suite 400",
-                      "San Francisco, CA 94105",
-                      "United States",
-                    ],
+                    label: "Location",
+                    lines: ["Sydney, Australia"],
                   },
                   {
                     icon: Clock,
                     label: "Business Hours",
                     lines: [
-                      "Monday - Friday: 9:00 AM - 6:00 PM PST",
-                      "Saturday: 10:00 AM - 2:00 PM PST",
-                      "Sunday: Closed",
+                      "Monday – Friday: 9:00 AM – 5:00 PM AEST",
+                      "Saturday – Sunday: Closed",
                     ],
                   },
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="flex items-start justify-center gap-4"
+                    className="flex items-start gap-4 py-5 first:pt-6"
                   >
-                    <item.icon className="mt-1 h-5 w-5 shrink-0 text-emerald-700" />
-                    <div className="text-center">
-                      <p className="text-sm font-bold uppercase tracking-wide text-neutral-900">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                      <item.icon className="h-4 w-4 text-emerald-700" />
+                    </span>
+                    <div className="text-left">
+                      <p className="text-base font-bold uppercase tracking-wide text-neutral-900">
                         {item.label}
                       </p>
                       {item.lines.map((line) => (
                         <p
                           key={line}
-                          className="text-sm font-normal text-neutral-600"
+                          className="mt-1.5 text-base font-normal leading-relaxed text-neutral-600"
                         >
                           {line}
                         </p>
@@ -197,24 +166,36 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            <Card className="w-full max-w-lg border-neutral-200 bg-white shadow-sm">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl font-bold text-neutral-900">
-                  Why Choose Elevation Software Solutions?
+            <Card className="w-full max-w-lg overflow-hidden border-emerald-200/80 bg-white shadow-sm">
+              <CardHeader className="border-b border-emerald-100 bg-emerald-50/70 text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-800">
+                  Our difference
+                </p>
+                <CardTitle className="mt-2 text-3xl font-bold text-neutral-900">
+                  Why Choose{" "}
+                  <span className="font-light text-emerald-800">
+                    Elevation Software Solutions?
+                  </span>
                 </CardTitle>
+                <CardDescription className="text-lg font-normal text-neutral-600">
+                  Trusted QA partners focused on quality, speed, and scale.
+                </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-5">
-                {WHY_CHOOSE.map((item, index) => (
+              <CardContent className="divide-y divide-emerald-100/80 px-6 pt-2 pb-6">
+                {WHY_CHOOSE.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center justify-center gap-3"
+                    className="flex items-start gap-4 py-5 first:pt-6"
                   >
-                    <span className="font-mono text-xs font-bold text-emerald-700">
-                      {String(index + 1).padStart(2, "0")}
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                      <Check
+                        className="h-4 w-4 text-emerald-700"
+                        strokeWidth={2.5}
+                      />
                     </span>
-                    <span className="text-center text-base font-medium text-neutral-800">
+                    <p className="text-left text-base font-medium leading-relaxed text-neutral-800">
                       {item}
-                    </span>
+                    </p>
                   </div>
                 ))}
               </CardContent>
@@ -253,48 +234,6 @@ export default function ContactPage() {
                   <p className="text-center text-sm font-normal leading-relaxed text-neutral-600">
                     {faq.answer}
                   </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5 — White connect (contrast before dark footer) */}
-      <section className="bg-white py-20 lg:py-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-6">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-              Multiple Ways to{" "}
-              <span className="font-light text-emerald-800">Connect</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm font-medium uppercase tracking-wide text-neutral-500">
-              Pick the channel that fits your timeline
-            </p>
-          </div>
-
-          <div className="grid justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {CONNECT_CHANNELS.map((channel) => (
-              <Card
-                key={channel.title}
-                className="group w-full max-w-xs border-neutral-200 bg-white text-center shadow-sm transition-shadow hover:border-emerald-200 hover:shadow-md"
-              >
-                <CardContent className="pt-8 pb-6">
-                  <channel.icon className="mx-auto mb-5 h-11 w-11 text-emerald-700 transition-transform group-hover:scale-110" />
-                  <h3 className="mb-2 text-lg font-bold text-neutral-900">
-                    {channel.title}
-                  </h3>
-                  <p className="mb-5 text-xs font-normal leading-relaxed text-neutral-600">
-                    {channel.description}
-                  </p>
-                  <div className="space-y-1.5">
-                    <p className="text-base font-semibold text-neutral-900">
-                      {channel.primary}
-                    </p>
-                    <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
-                      {channel.secondary}
-                    </p>
-                  </div>
                 </CardContent>
               </Card>
             ))}

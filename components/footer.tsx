@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Shield, Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -11,7 +11,12 @@ export function Footer() {
               href="/"
               className="flex items-center justify-center space-x-2"
             >
-              <Shield className="h-6 w-6 text-emerald-400" />
+              {/* Native img preserves PNG alpha reliably */}
+              <img
+                src="/images/elevation-logo-green.png?v=2"
+                alt="Elevation Software Solutions"
+                className="h-14 w-auto shrink-0 md:h-16"
+              />
               <span className="text-xl font-bold text-white">
                 Elevation Software Solutions
               </span>

@@ -5,6 +5,19 @@ import { Loader2 } from "lucide-react"
 
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
+const SERVICE_OPTIONS = [
+  "Automation Testing",
+  "AI Testing Solutions",
+  "Mobile Application",
+  "ETL Testing",
+  "Software QA Outsourcing",
+  "Manual Testing",
+  "Non-Functional Testing",
+  "Accessibility Testing",
+  "Security Testing",
+  "Other",
+]
+
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
@@ -118,6 +131,50 @@ export default function ContactForm() {
                 disabled={status === "submitting"}
                 className="w-full rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-3 text-base text-neutral-900 placeholder:text-neutral-400 transition focus:border-emerald-600 focus:bg-white focus:outline-none disabled:opacity-60"
               />
+            </div>
+
+            <div>
+              <label
+                htmlFor="contact-company"
+                className="mb-2 block text-xs font-semibold uppercase tracking-wide text-neutral-700"
+              >
+                Company Name
+              </label>
+              <input
+                id="contact-company"
+                name="company"
+                type="text"
+                required
+                placeholder="Your company"
+                disabled={status === "submitting"}
+                className="w-full rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-3 text-base text-neutral-900 placeholder:text-neutral-400 transition focus:border-emerald-600 focus:bg-white focus:outline-none disabled:opacity-60"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="contact-service"
+                className="mb-2 block text-xs font-semibold uppercase tracking-wide text-neutral-700"
+              >
+                Service Required
+              </label>
+              <select
+                id="contact-service"
+                name="service"
+                required
+                defaultValue=""
+                disabled={status === "submitting"}
+                className="w-full rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-3 text-base text-neutral-900 transition focus:border-emerald-600 focus:bg-white focus:outline-none disabled:opacity-60"
+              >
+                <option value="" disabled>
+                  Select a service
+                </option>
+                {SERVICE_OPTIONS.map((service) => (
+                  <option key={service} value={service}>
+                    {service}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
