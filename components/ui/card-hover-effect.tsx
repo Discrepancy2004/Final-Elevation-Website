@@ -1,8 +1,9 @@
 "use client"
 import { cn } from "@/lib/utils"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion, useInView } from "motion/react"
+import { EASE_OUT } from "@/components/home/scroll-reveal"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export const HoverEffect = ({
   items,
@@ -17,19 +18,33 @@ export const HoverEffect = ({
   className?: string
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(gridRef, { once: true, margin: "-60px", amount: 0.1 })
 
   return (
     <div
+      ref={gridRef}
       className={cn(
         "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
         className
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <motion.a
           href={item?.link}
           key={item?.link}
-          className='relative group  block p-2 h-full w-full'
+          initial={{ opacity: 0, transform: "translateY(12px) scale(0.98)" }}
+          animate={
+            inView
+              ? { opacity: 1, transform: "translateY(0) scale(1)" }
+              : undefined
+          }
+          transition={{
+            duration: 0.45,
+            delay: idx * 0.06,
+            ease: EASE_OUT,
+          }}
+          className='group relative block h-full w-full p-2 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-[1.01] motion-reduce:transition-none motion-reduce:hover:scale-100'
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -41,20 +56,34 @@ export const HoverEffect = ({
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
-                  transition: { duration: 0.15 },
+                  transition: { duration: 0.2, ease: EASE_OUT },
                 }}
                 exit={{
                   opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
+                  transition: { duration: 0.15, ease: EASE_OUT },
                 }}
               />
             )}
           </AnimatePresence>
           <Card image={item.image}>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+            <CardTitle
+              className={cn(
+                idx % 2 === 0
+                  ? "text-xl font-extrabold tracking-tight"
+                  : "text-lg font-light tracking-wide"
+              )}
+            >
+              {item.title}
+            </CardTitle>
+            <CardDescription
+              className={cn(
+                idx % 3 === 0 ? "text-sm font-medium" : "text-base font-normal"
+              )}
+            >
+              {item.description}
+            </CardDescription>
           </Card>
-        </a>
+        </motion.a>
       ))}
     </div>
   )
@@ -116,7 +145,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm text-center",
+        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-base text-center",
         className
       )}
     >

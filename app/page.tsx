@@ -24,6 +24,8 @@ import {
   Smartphone,
   Gauge,
   Award,
+  Globe,
+  Accessibility,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -35,8 +37,12 @@ import { StickyScroll } from "@/components/ui/process"
 import { Compare } from "@/components/ui/compare"
 import { HoverEffect } from "@/components/ui/card-hover-effect"
 import { FocusCards } from "@/components/ui/focus-cards"
-import FadeContent from "@/components/ui/fade"
-import { TestimonialsMarquee } from "@/app/testimonials"
+import {
+  Reveal,
+  RevealItem,
+  RevealStagger,
+  EASE_OUT,
+} from "@/components/home/scroll-reveal"
 
 export function FeaturesSectionDemo() {
   const features = [
@@ -74,23 +80,26 @@ export function FeaturesSectionDemo() {
   return (
     <div className='relative z-20 py-10 lg:py-40 max-w-7xl mx-auto'>
       <div className='px-8'>
-        <h4 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white'>
-          How We Work
-        </h4>
+        <p className='text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 text-center'>
+          Our process
+        </p>
+        <h2 className='mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white text-center sm:text-5xl lg:text-6xl xl:text-7xl'>
+          How We <span className='font-light text-emerald-800'>Work</span>
+        </h2>
 
-        <p className='text-base md:text-lg lg:text-xl max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300'>
+        <p className='text-lg md:text-xl max-w-2xl my-5 mx-auto text-neutral-600 text-center font-normal leading-relaxed dark:text-neutral-300'>
           From comprehensive test planning to seamless deployment, our QA process ensures
           quality at every stage of software development.
         </p>
       </div>
 
-      <div className='relative '>
-        <div className='grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800'>
+      <div className='relative'>
+        <div className='mt-12 grid grid-cols-1 lg:grid-cols-6 xl:rounded-md xl:border dark:border-neutral-800'>
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className=' h-full w-full'>{feature.skeleton}</div>
+              <div className='h-full w-full'>{feature.skeleton}</div>
             </FeatureCard>
           ))}
         </div>
@@ -115,7 +124,7 @@ const FeatureCard = ({
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <h3 className='max-w-5xl mx-auto text-center tracking-tight text-black dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight'>
+    <h3 className='max-w-5xl mx-auto mb-3 text-center text-xl font-bold leading-snug tracking-tight text-emerald-800 dark:text-emerald-400 md:text-2xl'>
       {children}
     </h3>
   )
@@ -125,8 +134,8 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   return (
     <p
       className={cn(
-        "text-xs md:text-sm max-w-4xl text-center mx-auto",
-        "text-neutral-500 font-light dark:text-neutral-300",
+        "text-sm md:text-base max-w-4xl text-center mx-auto",
+        "text-neutral-600 font-normal dark:text-neutral-400",
         "max-w-md mx-auto leading-relaxed mb-4"
       )}
     >
@@ -262,12 +271,12 @@ export const SkeletonTwo = () => {
 export const SkeletonFour = () => {
   return (
     <div className='h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10'>
-      <Globe className='absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72' />
+      <CobeGlobe className='absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72' />
     </div>
   )
 }
 
-export const Globe = ({ className }: { className?: string }) => {
+export const CobeGlobe = ({ className }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -347,15 +356,15 @@ export const projects = [
     title: "Automation Testing",
     description:
       "Streamline your testing process with cutting-edge automation tools and frameworks.",
-    link: "/services/web-development",
+    link: "/automation_testing",
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
   },
   {
-    title: "Accessibility Testing",
+    title: "AI Testing Solutions",
     description:
-      "Ensure your applications meet WCAG standards and create inclusive digital experiences.",
-    link: "/services/mobile-development",
+      "AI-generated test plans, scenarios, and cases that accelerate delivery and strengthen coverage.",
+    link: "/ai_testing",
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
   },
@@ -363,7 +372,7 @@ export const projects = [
     title: "Mobile Application",
     description:
       "Comprehensive testing for iOS and Android applications across all devices and platforms.",
-    link: "/services/ui-ux-design",
+    link: "/mobile_testing",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2000&auto=format&fit=crop",
   },
@@ -371,7 +380,7 @@ export const projects = [
     title: "ETL Testing",
     description:
       "Validate data transformation processes ensuring integrity and accuracy throughout pipelines.",
-    link: "/services/qa-testing",
+    link: "/etl_testing",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
   },
@@ -379,7 +388,7 @@ export const projects = [
     title: "Software QA Outsourcing",
     description:
       "Scale your QA capabilities with dedicated testing teams that integrate seamlessly.",
-    link: "/services/devops",
+    link: "/qa_outsourcing",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop",
   },
@@ -395,23 +404,23 @@ export const projects = [
     title: "Non-Functional Testing",
     description:
       "Comprehensive testing of performance, scalability, reliability, and usability requirements.",
-    link: "/services/database-design",
+    link: "/non_functional_testing",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
   },
   {
-    title: "Performance Testing",
+    title: "Accessibility Testing",
     description:
-      "Identify bottlenecks and optimize performance under various load conditions.",
-    link: "/services/api-development",
+      "Ensure your applications are usable by everyone with WCAG-aligned accessibility validation.",
+    link: "/accessibility_testing",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1573164713714-d95f43633508?q=80&w=2000&auto=format&fit=crop",
   },
   {
     title: "Security Testing",
     description:
       "Protect applications from vulnerabilities with penetration testing and security assessments.",
-    link: "/services/security-auditing",
+    link: "/security_testing",
     image:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2000&auto=format&fit=crop",
   },
@@ -477,35 +486,46 @@ export default function HomePage() {
       <div className='flex flex-col overflow-hidden'>
         <ContainerScroll
           titleComponent={
-            <>
-              <h1 className='text-4xl font-semibold text-black dark:text-white'>
-                Eliminating glitches, We
+            <motion.div
+              initial={{ opacity: 0, transform: "translateY(16px) scale(0.98)" }}
+              animate={{ opacity: 1, transform: "translateY(0) scale(1)" }}
+              transition={{ duration: 0.55, ease: EASE_OUT }}
+              className='space-y-4 text-left md:text-center'
+            >
+              <p className='text-sm font-semibold uppercase tracking-[0.25em] text-emerald-700'>
+                Elevation Software Solutions
+              </p>
+              <h1 className='text-4xl font-light leading-[1.1] tracking-tight text-neutral-800 dark:text-neutral-200 sm:text-5xl md:text-6xl'>
+                Eliminating glitches,
                 <br />
-                <span className='text-4xl md:text-[6rem] font-bold mt-1 leading-none'>
-                  Elevate Performance
+                <span className='text-4xl font-extrabold text-neutral-950 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl'>
+                  we{" "}
+                  <span className='text-emerald-800 dark:text-emerald-400'>
+                    Elevate Quality
+                  </span>
                 </span>
               </h1>
-            </>
+            </motion.div>
           }
         >
-          <img
-            src={"/scroll.jpg"}
-            alt='hero'
-            height={720}
-            width={1400}
-            className='mx-auto rounded-2xl object-cover h-full object-left-top'
-            draggable={false}
-          />
+          <motion.div
+            initial={{ clipPath: "inset(0 0 12% 0 round 1rem)" }}
+            animate={{ clipPath: "inset(0 0 0 0 round 1rem)" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE_OUT }}
+            className='h-full w-full overflow-hidden rounded-2xl'
+          >
+            <img
+              src={"/scroll.jpg"}
+              alt='hero'
+              height={720}
+              width={1400}
+              className='mx-auto h-full w-full rounded-2xl object-cover object-left-top'
+              draggable={false}
+            />
+          </motion.div>
         </ContainerScroll>
       </div>
-      <FadeContent
-        blur={false}
-        duration={1000}
-        easing='ease-out'
-        initialOpacity={0}
-      >
-        <MarketingHeroCard />
-      </FadeContent>
+      <MarketingHeroCard />
 
       <FeaturesSectionDemo />
 
@@ -575,55 +595,57 @@ export default function HomePage() {
       </FadeContent> */}
 
       {/* Stats Section */}
-      <section className='py-12 bg-muted/50'>
-        <div className='container px-4 md:px-6 max-w-7xl mx-auto'>
-          <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center'>
-            <div className='text-center max-w-xs'>
-              <div className='text-3xl font-bold text-primary mb-2'>3x</div>
-              <div className='text-sm text-muted-foreground text-center'>
-                Faster Time-to-Market
-              </div>
-            </div>
-            <div className='text-center max-w-xs'>
-              <div className='text-3xl font-bold text-primary mb-2'>99.9%</div>
-              <div className='text-sm text-muted-foreground text-center'>
-                Bug Detection Rate
-              </div>
-            </div>
-            <div className='text-center max-w-xs'>
-              <div className='text-3xl font-bold text-primary mb-2'>50+</div>
-              <div className='text-sm text-muted-foreground text-center'>
-                Expert QA Engineers
-              </div>
-            </div>
-            <div className='text-center max-w-xs'>
-              <div className='text-3xl font-bold text-primary mb-2'>24/7</div>
-              <div className='text-sm text-muted-foreground text-center'>
-                Support Available
-              </div>
-            </div>
-          </div>
+      <section className='border-y border-neutral-200/80 bg-neutral-50 py-16 dark:bg-neutral-900/40'>
+        <div className='container mx-auto max-w-7xl px-4 md:px-6'>
+          <Reveal>
+            <p className='mb-10 text-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500'>
+              By the numbers
+            </p>
+          </Reveal>
+          <RevealStagger className='grid gap-8 sm:grid-cols-2 lg:grid-cols-4' stagger={0.08}>
+            {[
+              { value: "3x", label: "Faster Time-to-Market" },
+              { value: "99.9%", label: "Bug Detection Rate" },
+              { value: "50+", label: "Expert QA Engineers" },
+              { value: "24/7", label: "Support Available" },
+            ].map((stat) => (
+              <RevealItem key={stat.label}>
+                <div className='border-t border-neutral-200 pt-6 text-center dark:border-neutral-700'>
+                  <div className='font-mono text-5xl font-bold tracking-tight text-emerald-800 dark:text-emerald-400 md:text-6xl'>
+                    {stat.value}
+                  </div>
+                  <div className='mt-2 text-base font-semibold uppercase tracking-wide text-neutral-900 dark:text-white'>
+                    {stat.label}
+                  </div>
+                </div>
+              </RevealItem>
+            ))}
+          </RevealStagger>
         </div>
       </section>
 
       {/* Services Section */}
 
-      <div className='container px-4 md:px-6 max-w-7xl mx-auto pt-20 pb-10'>
-        <div className=' mb-12 text-center'>
-          <Badge variant='outline' className='mb-4'>
+      <div className='container mx-auto max-w-7xl px-4 pb-10 pt-20 md:px-6'>
+        <Reveal className='mb-12 text-center'>
+          <p className='text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700'>
             Our Services
-          </Badge>
-          <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-            Comprehensive Testing Solutions
+          </p>
+          <h2 className='mt-3 text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl'>
+            Comprehensive
+            <br />
+            <span className='font-light text-emerald-800 dark:text-emerald-400'>
+              Testing Solutions
+            </span>
           </h2>
-          <p className='mt-4 text-muted-foreground md:text-xl max-w-3xl mx-auto'>
+          <p className='mx-auto mt-4 max-w-2xl text-lg font-normal leading-relaxed text-neutral-600 dark:text-neutral-400 md:text-xl md:font-light'>
             From manual testing to automated CI/CD integration, we provide
             end-to-end quality assurance services.
           </p>
+        </Reveal>
 
-          <div className='max-w-5xl mx-auto px-8'>
-            <HoverEffect items={projects} />
-          </div>
+        <div className='mx-auto max-w-5xl px-4 md:px-8'>
+          <HoverEffect items={projects} />
         </div>
       </div>
 
@@ -698,24 +720,24 @@ export default function HomePage() {
             <Card className='group hover:shadow-lg transition-shadow'>
               <CardHeader>
                 <Users className='h-10 w-10 text-primary mb-2' />
-                <CardTitle>Performance Testing</CardTitle>
+                <CardTitle>Accessibility Testing</CardTitle>
                 <CardDescription>
-                  Ensure your applications perform under any load
+                  Ensure your applications are usable by everyone
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className='space-y-2 text-sm'>
                   <li className='flex items-center gap-2'>
                     <CheckCircle className='h-4 w-4 text-primary' />
-                    Load Testing
+                    WCAG Compliance Testing
                   </li>
                   <li className='flex items-center gap-2'>
                     <CheckCircle className='h-4 w-4 text-primary' />
-                    Stress Testing
+                    Screen Reader Testing
                   </li>
                   <li className='flex items-center gap-2'>
                     <CheckCircle className='h-4 w-4 text-primary' />
-                    Scalability Testing
+                    Keyboard Navigation Testing
                   </li>
                 </ul>
               </CardContent>
@@ -732,21 +754,6 @@ export default function HomePage() {
         </div>
       </section>
       */}
-
-      {/* Testimonials */}
-      <section className='flex items-center justify-center pt-10 pb-20 bg-white dark:bg-white'>
-        <div className='container px-4 md:px-6 max-w-7xl mx-auto'>
-          <div className='text-center mb-12'>
-            <Badge variant='outline' className='mb-4 text-black'>
-              Testimonials
-            </Badge>
-            <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl text-black'>
-              What Our Clients Say
-            </h2>
-          </div>
-          <TestimonialsMarquee />
-        </div>
-      </section>
 
       {/* Industry Solutions 
       <section className='min-h-screen flex items-center justify-center py-20'>
@@ -847,143 +854,56 @@ export default function HomePage() {
       {/* Technology Stack */}
       <section className='min-h-screen flex items-center justify-center py-20 bg-muted/50'>
         <div className='container px-4 md:px-6 max-w-7xl mx-auto'>
-          <div className='text-center mb-12'>
-            <Badge variant='outline' className='mb-4'>
+          <Reveal className='mb-12 text-center'>
+            <p className='text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500'>
               Technology Stack
-            </Badge>
-            <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl'>
-              Cutting-Edge Testing Tools & Frameworks
+            </p>
+            <h2 className='mt-3 text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl'>
+              Tools & <span className='font-light text-emerald-800 dark:text-emerald-400'>Frameworks</span>
             </h2>
-            <p className='mt-4 text-muted-foreground md:text-xl max-w-3xl mx-auto'>
+            <p className='mx-auto mt-4 max-w-3xl text-lg font-normal text-neutral-600 dark:text-neutral-400 md:text-xl'>
               We use the latest tools and technologies to deliver comprehensive
               testing solutions.
             </p>
-          </div>
-          <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/selenium/43B02A'
-                    alt='Selenium'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>Selenium</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Web automation testing
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/cypress/17202C'
-                    alt='Cypress'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>Cypress</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Modern web testing
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/appium/5A0FC8'
-                    alt='Appium'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>Appium</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Mobile app testing
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/apachejmeter/D22128'
-                    alt='JMeter'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>JMeter</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Performance testing
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/owasp/000000'
-                    alt='OWASP ZAP'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>OWASP ZAP</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Security testing
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/testrail/2B3A4E'
-                    alt='TestRail'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>TestRail</h3>
-                <p className='text-sm text-muted-foreground'>Test management</p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/postman/FF6C37'
-                    alt='Postman'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>Postman</h3>
-                <p className='text-sm text-muted-foreground'>API testing</p>
-              </CardContent>
-            </Card>
-
-            <Card className='text-center'>
-              <CardContent className='pt-6'>
-                <div className='w-16 h-16 bg-white dark:bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-4 p-2'>
-                  <img
-                    src='https://cdn.simpleicons.org/jenkins/D24939'
-                    alt='Jenkins'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
-                <h3 className='font-semibold mb-2'>Jenkins</h3>
-                <p className='text-sm text-muted-foreground'>
-                  CI/CD integration
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          </Reveal>
+          <RevealStagger className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' stagger={0.05}>
+            {[
+              { title: "Web Automation", description: "Cross-browser UI & regression suites", icon: Globe },
+              { title: "API Testing", description: "REST, GraphQL & contract validation", icon: Code },
+              { title: "Mobile Testing", description: "iOS, Android & responsive validation", icon: Smartphone },
+              { title: "Accessibility", description: "WCAG audits & inclusive UX validation", icon: Accessibility },
+              { title: "Security", description: "Vulnerability scans & penetration testing", icon: Shield },
+              { title: "Test Management", description: "Case design, traceability & reporting", icon: Award },
+              { title: "CI/CD Pipelines", description: "Automated gates in your release flow", icon: Zap },
+              { title: "Manual QA", description: "Exploratory, usability & acceptance testing", icon: Users },
+            ].map((item, idx) => (
+              <RevealItem key={item.title}>
+              <Card className='text-center'>
+                <CardContent className='px-6 pt-10 pb-8'>
+                  <div className='mx-auto mb-5 flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-emerald-50 dark:bg-emerald-950/40'>
+                    <item.icon
+                      className='h-7 w-7 shrink-0 text-emerald-800 dark:text-emerald-400'
+                      strokeWidth={1.75}
+                    />
+                  </div>
+                  <h3
+                    className={cn(
+                      "mb-2 text-neutral-900 dark:text-white",
+                      idx % 2 === 0
+                        ? "text-lg font-extrabold tracking-tight md:text-xl"
+                        : "text-base font-semibold uppercase tracking-wide md:text-lg"
+                    )}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className='text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400 md:text-base'>
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+              </RevealItem>
+            ))}
+          </RevealStagger>
         </div>
       </section>
 
@@ -1031,7 +951,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-xs font-medium uppercase tracking-wide text-neutral-500'>
                     Implemented comprehensive automated testing suite covering
                     500+ test cases.
                   </p>
@@ -1067,7 +987,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-xs font-medium uppercase tracking-wide text-neutral-500'>
                     Comprehensive security testing including penetration testing
                     and compliance validation.
                   </p>
@@ -1103,7 +1023,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-xs font-medium uppercase tracking-wide text-neutral-500'>
                     Rigorous validation testing ensuring patient safety and
                     regulatory compliance.
                   </p>
@@ -1116,28 +1036,43 @@ export default function HomePage() {
       */}
 
       {/* CTA Section */}
-      <section className='flex items-center justify-center py-12 md:py-16 bg-background'>
-        <div className='container px-4 md:px-6 max-w-7xl mx-auto'>
-          <div className='text-center space-y-4'>
-            <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-              Ready to Improve Your Software Quality?
+      <section className='flex items-center justify-center bg-emerald-50/60 py-16 md:py-24 dark:bg-emerald-950/20'>
+        <div className='container mx-auto max-w-7xl px-4 md:px-6'>
+          <Reveal className='mx-auto max-w-3xl space-y-6 text-center'>
+            <p className='text-sm font-semibold uppercase tracking-[0.25em] text-emerald-800'>
+              Get started
+            </p>
+            <h2 className='text-4xl font-light leading-tight tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl'>
+              Ready to improve your{" "}
+              <span className='font-extrabold text-emerald-900 dark:text-emerald-400'>
+                software quality?
+              </span>
             </h2>
-            <p className='mx-auto max-w-[600px] text-muted-foreground md:text-xl'>
+            <p className='mx-auto max-w-xl text-lg font-normal leading-relaxed text-neutral-600 dark:text-neutral-400 md:text-xl'>
               Get started with a free consultation and see how our QA experts
               can help your project succeed.
             </p>
             <div className='flex flex-col gap-2 min-[400px]:flex-row justify-center'>
-              <Button size='lg' asChild>
+              <Button
+                size='lg'
+                asChild
+                className='transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]'
+              >
                 <Link href='/contact'>
                   Start Free Consultation
                   <ArrowRight className='ml-2 h-4 w-4' />
                 </Link>
               </Button>
-              <Button variant='outline' size='lg' asChild>
+              <Button
+                variant='outline'
+                size='lg'
+                asChild
+                className='transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]'
+              >
                 <Link href='/about'>Learn More About Us</Link>
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

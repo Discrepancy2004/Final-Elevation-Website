@@ -264,7 +264,7 @@ export const NavbarLogo = () => {
         height={30}
       />
       <span className='font-medium text-black dark:text-white'>
-        eLevate Technologies
+        Elevation Software
       </span>
     </a>
   )

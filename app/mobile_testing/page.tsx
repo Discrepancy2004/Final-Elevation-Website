@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { AuroraBackground as Aurora } from "../about/aurora"
-import { ArrowRight, ClipboardList, Sparkles } from "lucide-react"
+import { ArrowRight, Smartphone, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { NavbarDemo } from "@/components/ui/navbar"
 import { Footer } from "@/components/footer"
@@ -17,127 +17,127 @@ import { motion } from "motion/react"
 
 const SERVICES = [
   {
-    title: "Test Planning and Requirement Analysis",
+    title: "Functional Testing",
     description:
-      "Comprehensive analysis of requirements and strategic test planning before execution begins.",
+      "Validating core app functionality to ensure features work as expected across devices and operating systems.",
     subitems: [
-      "Requirement traceability and coverage gap analysis",
-      "Risk-based scope, prioritization, and test charters",
-      "Test strategy aligned to release milestones and environments",
-      "Entry, exit, and acceptance criteria defined upfront",
+      "Feature validation across Android and iOS",
+      "Workflow and integration path coverage",
+      "Defect reporting with device context",
     ],
     span: "lg:col-span-2 lg:row-span-2",
     emphasis: true,
-    icon: "planning" as const,
+    icon: "featured" as const,
   },
   {
-    title: "Functional, Regression, and Exploratory Testing",
+    title: "Regression & Exploratory Testing",
     description:
-      "Thorough testing across all functional areas with systematic approaches.",
+      "Ensuring stability after updates while uncovering hidden issues through exploratory techniques.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Defect Reporting and Management",
-    description: "Detailed defect documentation and lifecycle management.",
+    title: "Cross-Platform & Cross-Device Testing",
+    description:
+      "Testing across multiple devices, screen sizes, operating systems, and configurations.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Test Case Design and Execution",
+    title: "Performance & Network Testing",
     description:
-      "Creating comprehensive test cases and systematic execution.",
+      "Evaluating app performance under varying network conditions (3G, 4G, 5G, Wi-Fi) and load scenarios.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Collaboration with Development and QA Teams",
+    title: "Security & Data Validation Testing",
     description:
-      "Seamless integration with existing teams to enhance quality processes.",
+      "Ensuring secure data handling, authentication, and protection of sensitive user information.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "AI-Driven Test Design & Acceleration",
+    title: "Usability & User Experience Testing",
     description:
-      "AI-generated test plans, scenarios, and cases imported into your test management tools—reducing manual effort and accelerating delivery.",
+      "Assessing navigation, accessibility, and overall user experience for intuitive mobile interactions.",
     span: "lg:col-span-4",
     emphasis: false,
-    icon: "ai" as const,
+    icon: "accent" as const,
   },
 ]
 
 const PROCESS = [
   {
-    step: "Strategy & planning",
+    step: "Device matrix & scope",
     detail:
-      "Test strategy, requirement analysis, and risk-based scope definition.",
+      "Platform coverage, device selection, and test strategy aligned to your user base.",
   },
   {
-    step: "Scenarios & cases",
+    step: "Functional validation",
     detail:
-      "Test scenarios, test cases, and coverage maps aligned to real usage.",
+      "Core features, regression cycles, and exploratory passes across real and virtual devices.",
   },
   {
-    step: "Execution",
+    step: "Performance & security",
     detail:
-      "Functional, regression, exploratory, and UAT cycles run with discipline.",
+      "Network conditions, load scenarios, authentication, and sensitive data handling.",
   },
   {
-    step: "Defect management",
+    step: "UX sign-off & release",
     detail:
-      "Reporting, triage, retest, and closure through to release sign-off.",
+      "Usability review, accessibility checks, and continuous testing wired into your pipeline.",
   },
 ]
 
-const TOOLS = [
-  "JIRA",
-  "Azure DevOps",
-  "TestRail / Zephyr / Xray",
-  "Postman (API Testing)",
-  "Playwright / Selenium",
+const TOOLS_PLATFORMS = [
+  "Appium / Playwright (Mobile Web)",
+  "Android Studio / Xcode",
   "BrowserStack / Sauce Labs",
-  "Git / CI-CD Pipelines",
+  "ADB / Emulator & Simulator Testing",
 ]
 
-const METHODOLOGIES = [
-  "Agile & Scrum",
-  "Waterfall",
-  "Shift-Left & Shift-Right Testing",
-  "Risk-Based Testing",
-  "User Acceptance Testing (UAT)",
-  "Exploratory Testing",
-  "AI-Assisted Testing",
+const CICD_INTEGRATION = [
+  "Jenkins / Azure DevOps / GitHub Actions",
+  "Automated mobile test execution in pipelines",
+  "Continuous testing for faster releases",
+]
+
+const TESTING_PRACTICES = [
+  "Real Device Testing",
+  "Cross-Browser & Cross-OS Validation",
+  "Gesture & Touch Interaction Testing",
+  "Shift-Left & Continuous Mobile Testing",
 ]
 
 const STRENGTHS = [
   {
-    title: "Exceptional Attention to Detail & Analytical Thinking",
-    body: "A meticulous, quality-first approach to uncover even the smallest issues that can impact performance and user experience.",
+    title: "Device & Platform Agnostic Testing",
+    body: "Ensuring consistent performance across Android, iOS, and hybrid applications.",
   },
   {
-    title: "Clear Communication & High-Quality Documentation",
-    body: "Transparent reporting, well-structured documentation, and seamless communication throughout the testing lifecycle.",
+    title: "Focus on Real User Conditions",
+    body: "Testing under real-world scenarios including network variability and device diversity.",
   },
   {
-    title: "Cross-Platform & Domain-Agnostic Expertise",
-    body: "Proven ability to test across diverse platforms, technologies, and industries with adaptability and precision.",
+    title: "CI/CD-Ready Testing Approach",
+    body: "Enabling continuous mobile testing integrated into development pipelines.",
   },
   {
-    title: "AI-Enabled Efficiency & Innovation",
-    body: "Leveraging AI to accelerate test design, improve coverage, and reduce manual effort while maintaining high quality.",
+    title: "Quality-Driven & Detail-Oriented Execution",
+    body: "Ensuring high coverage with deep validation and defect detection.",
   },
   {
-    title: "Commitment to Quality & Business Outcomes",
-    body: "Focused on delivering reliable, production-ready software that enhances user satisfaction and drives business success.",
+    title: "User-Centric Testing Approach",
+    body: "Delivering apps that provide smooth, engaging, and reliable user experiences.",
   },
 ]
 
-export default function ManualTestingPage() {
+export default function MobileApplicationPage() {
   return (
     <div className='min-h-screen bg-white text-neutral-900'>
       <NavbarDemo />
@@ -157,7 +157,7 @@ export default function ManualTestingPage() {
                   textShadow: "0 2px 24px rgba(0, 0, 0, 0.45)",
                 }}
               >
-                Manual
+                Mobile
               </span>
               <span
                 className='-mt-1 block text-[clamp(4.5rem,16vw,8rem)] font-black leading-[0.88] tracking-[-0.03em] text-emerald-400'
@@ -166,22 +166,22 @@ export default function ManualTestingPage() {
                     "0 0 48px rgba(16, 185, 129, 0.35), 0 0 96px rgba(220, 38, 38, 0.15)",
                 }}
               >
-                Testing
+                Application
               </span>
             </h1>
           </motion.div>
         </div>
       </Aurora>
 
-      {/* Intro — offset editorial */}
+      {/* Intro */}
       <section className='border-b border-neutral-200 bg-white py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <div className='grid items-center gap-12 lg:grid-cols-12 lg:gap-16'>
             <Reveal className='lg:col-span-5'>
               <div className='overflow-hidden rounded-2xl border border-neutral-200'>
                 <img
-                  src='https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop'
-                  alt='QA team reviewing test results'
+                  src='https://images.unsplash.com/photo-1556656793-08538906a9f8?q=80&w=2000&auto=format&fit=crop'
+                  alt='Mobile devices used for cross-platform application testing'
                   className='h-[320px] w-full object-cover md:h-[420px]'
                 />
               </div>
@@ -189,29 +189,29 @@ export default function ManualTestingPage() {
             <div className='lg:col-span-7 lg:pl-4'>
               <Reveal delay={0.08}>
                 <p className='text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700'>
-                  Expert manual QA
+                  Mobile application testing
                 </p>
                 <h2 className='mt-4 max-w-xl text-4xl font-light leading-tight tracking-tight text-neutral-900 sm:text-5xl'>
-                  Reliable software,{" "}
+                  Seamless performance,{" "}
                   <span className='font-extrabold text-emerald-800'>
-                    any platform.
+                    every device.
                   </span>
                 </h2>
                 <div className='mt-6 max-w-lg space-y-4 text-base leading-relaxed text-neutral-600 md:text-lg md:font-light'>
                   <p>
-                    We deliver expert manual testing services to ensure
-                    high-quality, reliable, and user-focused software across any
-                    platform, technology, or domain.
+                    We provide comprehensive mobile application testing services
+                    to ensure your apps deliver seamless performance, exceptional
+                    usability, and consistent functionality across devices,
+                    platforms, and networks.
                   </p>
                   <p>
-                    Our services include end-to-end testing, from test strategy
-                    and planning through scenarios, cases, execution, and defect
-                    management, ensuring complete validation of your application.
+                    Our approach focuses on delivering high-quality, user-centric
+                    mobile experiences—from functional and regression testing
+                    through performance, security, and UX validation.
                   </p>
                   <p>
-                    With real-world usage, risk-based testing, and relentless
-                    attention to detail, we help you find issues early, improve
-                    quality, and ship with confidence.
+                    Whether you ship on Android, iOS, or both, we help you release
+                    with confidence under real-world conditions.
                   </p>
                 </div>
               </Reveal>
@@ -220,32 +220,35 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Services — bento grid */}
+      {/* Comprehensive mobile testing solutions — bento grid */}
       <section className='bg-emerald-50/70 py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mb-14 max-w-2xl'>
             <h2 className='text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl'>
               Comprehensive{" "}
               <span className='font-light text-emerald-800'>
-                Testing Solutions
+                Mobile Testing Solutions
               </span>
             </h2>
             <p className='mt-4 text-lg text-neutral-600 md:text-xl'>
-              Full-cycle manual QA, from planning through execution and defect
-              management.
+              Full-spectrum mobile QA across functionality, performance, security,
+              and user experience.
             </p>
           </Reveal>
 
-          <RevealStagger className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2' stagger={0.07}>
+          <RevealStagger
+            className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2'
+            stagger={0.07}
+          >
             {SERVICES.map((service) => (
               <RevealItem
                 key={service.title}
                 className={cn(
                   "rounded-2xl border border-emerald-200/80 bg-white p-6 md:p-8",
                   service.span,
-                  (service.emphasis || service.icon === "ai") &&
+                  (service.emphasis || service.icon === "accent") &&
                     "lg:flex lg:flex-col lg:justify-between",
-                  service.icon === "ai" &&
+                  service.icon === "accent" &&
                     "border-emerald-300/80 bg-emerald-50/50"
                 )}
               >
@@ -254,10 +257,10 @@ export default function ManualTestingPage() {
                     className={cn(
                       service.emphasis &&
                         "text-2xl font-extrabold tracking-tight text-emerald-800 md:text-3xl",
-                      service.icon === "ai" &&
+                      service.icon === "accent" &&
                         "text-lg font-extrabold tracking-tight text-emerald-900 md:text-xl",
                       !service.emphasis &&
-                        service.icon !== "ai" &&
+                        service.icon !== "accent" &&
                         "text-base font-bold uppercase tracking-wide text-emerald-800"
                     )}
                   >
@@ -288,13 +291,13 @@ export default function ManualTestingPage() {
                     </ul>
                   )}
                 </div>
-                {service.icon === "planning" && (
-                  <ClipboardList
+                {service.icon === "featured" && (
+                  <Smartphone
                     className='mt-8 h-10 w-10 text-emerald-700/40'
                     strokeWidth={1.25}
                   />
                 )}
-                {service.icon === "ai" && (
+                {service.icon === "accent" && (
                   <Sparkles
                     className='mt-6 h-8 w-8 text-emerald-600'
                     strokeWidth={1.5}
@@ -306,7 +309,7 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Process — sticky headline + step list */}
+      {/* Process */}
       <section className='bg-neutral-100 py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <div className='grid gap-16 lg:grid-cols-2'>
@@ -315,17 +318,20 @@ export default function ManualTestingPage() {
                 End-to-end coverage
               </p>
               <h2 className='mt-4 text-4xl font-extrabold leading-[1.1] text-neutral-900 sm:text-5xl'>
-                Strategy through
+                Devices through
                 <br />
-                <span className='font-light text-emerald-800'>sign-off.</span>
+                <span className='font-light text-emerald-800'>release.</span>
               </h2>
               <p className='mt-6 max-w-md text-base leading-relaxed text-neutral-600'>
-                Every engagement spans the full testing lifecycle so nothing
-                slips between planning and production.
+                Every engagement spans the full mobile testing lifecycle so your
+                app performs reliably for every user.
               </p>
             </Reveal>
 
-            <RevealStagger className='space-y-0 border-t border-neutral-300' stagger={0.1}>
+            <RevealStagger
+              className='space-y-0 border-t border-neutral-300'
+              stagger={0.1}
+            >
               {PROCESS.map((item, idx) => (
                 <RevealItem
                   key={item.step}
@@ -351,48 +357,63 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Tools & methodologies */}
+      {/* Tools, technologies & practices */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mx-auto mb-14 max-w-3xl text-center'>
             <h2 className='text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl'>
-              Industry-Standard Tools
+              Tools, Technologies
               <br />
               <span className='font-light text-emerald-800'>
-                and Modern Techniques
+                & Modern Practices
               </span>
             </h2>
             <p className='mt-4 text-lg text-neutral-600 md:text-xl'>
-              We use leading tools and proven practices to deliver efficient,
-              high-quality testing across your stack.
+              Industry-standard mobile testing tools paired with CI/CD integration
+              and proven practices.
             </p>
           </Reveal>
 
-          <div className='grid gap-12 lg:grid-cols-2 lg:gap-16'>
+          <div className='grid gap-12 lg:grid-cols-3 lg:gap-10'>
             <Reveal>
               <p className='mb-6 text-sm font-bold uppercase tracking-wide text-emerald-800'>
                 Tools & platforms
               </p>
               <RevealStagger className='flex flex-wrap gap-2' stagger={0.04}>
-                {TOOLS.map((tool) => (
-                  <RevealItem key={tool}>
+                {TOOLS_PLATFORMS.map((item) => (
+                  <RevealItem key={item}>
                     <span className='inline-block rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2.5 text-sm font-semibold text-neutral-700'>
-                      {tool}
+                      {item}
                     </span>
                   </RevealItem>
                 ))}
               </RevealStagger>
             </Reveal>
 
-            <Reveal delay={0.08}>
+            <Reveal delay={0.06}>
               <p className='mb-6 text-sm font-bold uppercase tracking-wide text-emerald-800'>
-                Methodologies & practices
+                CI/CD & DevOps integration
               </p>
               <RevealStagger className='flex flex-wrap gap-2' stagger={0.04}>
-                {METHODOLOGIES.map((method) => (
-                  <RevealItem key={method}>
+                {CICD_INTEGRATION.map((item) => (
+                  <RevealItem key={item}>
                     <span className='inline-block rounded-full border border-emerald-200/80 bg-emerald-50/60 px-4 py-2.5 text-sm font-semibold text-neutral-700'>
-                      {method}
+                      {item}
+                    </span>
+                  </RevealItem>
+                ))}
+              </RevealStagger>
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <p className='mb-6 text-sm font-bold uppercase tracking-wide text-emerald-800'>
+                Testing practices
+              </p>
+              <RevealStagger className='flex flex-wrap gap-2' stagger={0.04}>
+                {TESTING_PRACTICES.map((item) => (
+                  <RevealItem key={item}>
+                    <span className='inline-block rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2.5 text-sm font-semibold text-neutral-700'>
+                      {item}
                     </span>
                   </RevealItem>
                 ))}
@@ -402,7 +423,7 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Strengths — dark green band */}
+      {/* What sets us apart */}
       <section className='bg-emerald-950 py-20 text-emerald-50 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mb-14 text-center lg:text-left'>
@@ -448,14 +469,14 @@ export default function ManualTestingPage() {
       <section className='border-y border-emerald-200/60 bg-emerald-50/50 py-24 lg:py-32'>
         <Reveal className='container mx-auto max-w-4xl px-4 text-center md:px-6'>
           <p className='text-2xl font-light leading-snug text-neutral-800 sm:text-3xl md:text-4xl lg:text-5xl'>
-            Identify issues early.
+            Test across every device.
           </p>
           <p className='mt-4 text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl md:text-5xl lg:text-6xl'>
-            Release with confidence.
+            Ship experiences users trust.
           </p>
           <p className='mx-auto mt-8 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg'>
-            User-focused validation, risk-based coverage, and production-ready
-            software that supports real business outcomes.
+            Real devices, real networks, and user-centric validation for mobile
+            apps that perform when it matters most.
           </p>
         </Reveal>
       </section>
@@ -469,13 +490,13 @@ export default function ManualTestingPage() {
                 Start a conversation
               </p>
               <h2 className='mt-3 text-3xl font-extrabold text-neutral-900 sm:text-4xl'>
-                Ready to elevate your software quality?
+                Ready to elevate your mobile quality?
               </h2>
             </div>
             <div className='md:text-right'>
               <p className='text-base text-neutral-600 md:ml-auto md:max-w-sm md:text-lg'>
-                Share your platform, timeline, and goals. We will propose a
-                tailored manual testing approach for your team.
+                Share your platforms, device targets, and release timeline. We
+                will propose a tailored mobile testing approach for your app.
               </p>
               <div className='mt-8 flex flex-col gap-3 min-[400px]:flex-row md:justify-end'>
                 <Button

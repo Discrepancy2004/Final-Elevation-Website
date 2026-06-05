@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { AuroraBackground as Aurora } from "../about/aurora"
-import { ArrowRight, ClipboardList, Sparkles } from "lucide-react"
+import { ArrowRight, Cog, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { NavbarDemo } from "@/components/ui/navbar"
 import { Footer } from "@/components/footer"
@@ -14,130 +14,126 @@ import {
 } from "@/components/home/scroll-reveal"
 import { cn } from "@/lib/utils"
 import { motion } from "motion/react"
+import { PipelineFlowDiagram } from "@/components/automation/pipeline-flow-diagram"
 
 const SERVICES = [
   {
-    title: "Test Planning and Requirement Analysis",
+    title: "Automation Strategy & Framework Design",
     description:
-      "Comprehensive analysis of requirements and strategic test planning before execution begins.",
+      "Scalable, reusable automation frameworks aligned to your application architecture and business goals.",
     subitems: [
-      "Requirement traceability and coverage gap analysis",
-      "Risk-based scope, prioritization, and test charters",
-      "Test strategy aligned to release milestones and environments",
-      "Entry, exit, and acceptance criteria defined upfront",
+      "Architecture-aligned framework blueprints",
+      "Reusable components and shared libraries",
+      "Coverage strategy tied to release risk",
     ],
     span: "lg:col-span-2 lg:row-span-2",
     emphasis: true,
-    icon: "planning" as const,
+    icon: "featured" as const,
   },
   {
-    title: "Functional, Regression, and Exploratory Testing",
+    title: "Web & Mobile Test Automation",
     description:
-      "Thorough testing across all functional areas with systematic approaches.",
+      "End-to-end automation for web and mobile platforms using modern open-source and cross-platform tools.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Defect Reporting and Management",
-    description: "Detailed defect documentation and lifecycle management.",
+    title: "Framework Development & Deployment",
+    description:
+      "Building and deploying automation frameworks with CI/CD integration and advanced reporting.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Test Case Design and Execution",
+    title: "AI-Driven Automation Implementation",
     description:
-      "Creating comprehensive test cases and systematic execution.",
+      "AI, MCP servers, and knowledge bases for intelligent test generation, self-healing scripts, and optimized coverage.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "Collaboration with Development and QA Teams",
+    title: "Test Script Development & Execution",
     description:
-      "Seamless integration with existing teams to enhance quality processes.",
+      "Maintainable scripts with structured execution, reporting, and reusability built in from day one.",
     span: "lg:col-span-1",
     emphasis: false,
     icon: null,
   },
   {
-    title: "AI-Driven Test Design & Acceleration",
+    title: "CI/CD Integration & Continuous Testing",
     description:
-      "AI-generated test plans, scenarios, and cases imported into your test management tools—reducing manual effort and accelerating delivery.",
+      "Seamless pipeline integration enabling continuous testing and faster, more reliable releases.",
     span: "lg:col-span-4",
     emphasis: false,
-    icon: "ai" as const,
+    icon: "accent" as const,
   },
 ]
 
 const PROCESS = [
   {
-    step: "Strategy & planning",
+    step: "Strategy & design",
     detail:
-      "Test strategy, requirement analysis, and risk-based scope definition.",
+      "Automation strategy, framework architecture, and coverage planning aligned to your stack.",
   },
   {
-    step: "Scenarios & cases",
+    step: "Build & automate",
     detail:
-      "Test scenarios, test cases, and coverage maps aligned to real usage.",
+      "Web and mobile scripts, reusable modules, and data-driven flows across platforms.",
   },
   {
-    step: "Execution",
+    step: "Pipeline integration",
     detail:
-      "Functional, regression, exploratory, and UAT cycles run with discipline.",
+      "CI/CD hooks, continuous testing gates, and reporting wired into your delivery pipeline.",
   },
   {
-    step: "Defect management",
+    step: "Optimize & maintain",
     detail:
-      "Reporting, triage, retest, and closure through to release sign-off.",
+      "Self-healing scripts, AI-assisted updates, and ongoing framework refinement.",
   },
 ]
 
 const TOOLS = [
-  "JIRA",
-  "Azure DevOps",
-  "TestRail / Zephyr / Xray",
-  "Postman (API Testing)",
-  "Playwright / Selenium",
-  "BrowserStack / Sauce Labs",
-  "Git / CI-CD Pipelines",
+  "Playwright / Selenium / Appium",
+  "RestAssured / Postman (API Automation)",
+  "C# / Python / JavaScript / Java",
+  "Git / Azure DevOps / Jenkins / GitHub Actions",
 ]
 
 const METHODOLOGIES = [
-  "Agile & Scrum",
-  "Waterfall",
-  "Shift-Left & Shift-Right Testing",
-  "Risk-Based Testing",
-  "User Acceptance Testing (UAT)",
-  "Exploratory Testing",
-  "AI-Assisted Testing",
+  "AI-Assisted Automation",
+  "Reusable & Modular Frameworks",
+  "Data-Driven & Keyword-Driven Testing",
+  "Cross-Browser & Cross-Platform Testing",
+  "Shift-Left & Continuous Testing",
 ]
 
 const STRENGTHS = [
   {
-    title: "Exceptional Attention to Detail & Analytical Thinking",
-    body: "A meticulous, quality-first approach to uncover even the smallest issues that can impact performance and user experience.",
+    title: "Scalable & Maintainable Frameworks",
+    body: "Built with clean architecture for long-term scalability and easy maintenance.",
   },
   {
-    title: "Clear Communication & High-Quality Documentation",
-    body: "Transparent reporting, well-structured documentation, and seamless communication throughout the testing lifecycle.",
+    title: "AI-Enhanced Efficiency",
+    body: "Reduced script maintenance with faster and smarter automation using AI.",
   },
   {
-    title: "Cross-Platform & Domain-Agnostic Expertise",
-    body: "Proven ability to test across diverse platforms, technologies, and industries with adaptability and precision.",
+    title: "Faster Time to Market",
+    body: "Accelerated release cycles through automation and continuous testing.",
   },
   {
-    title: "AI-Enabled Efficiency & Innovation",
-    body: "Leveraging AI to accelerate test design, improve coverage, and reduce manual effort while maintaining high quality.",
+    title: "Seamless Team Integration",
+    body: "Fits smoothly into existing DevOps and QA workflows.",
   },
   {
-    title: "Commitment to Quality & Business Outcomes",
-    body: "Focused on delivering reliable, production-ready software that enhances user satisfaction and drives business success.",
+    title: "Focus on Quality & ROI",
+    body: "Maximizing test coverage while reducing cost and improving business outcomes.",
   },
 ]
 
-export default function ManualTestingPage() {
+export default function AutomationTestingPage() {
   return (
     <div className='min-h-screen bg-white text-neutral-900'>
       <NavbarDemo />
@@ -157,7 +153,7 @@ export default function ManualTestingPage() {
                   textShadow: "0 2px 24px rgba(0, 0, 0, 0.45)",
                 }}
               >
-                Manual
+                Automation
               </span>
               <span
                 className='-mt-1 block text-[clamp(4.5rem,16vw,8rem)] font-black leading-[0.88] tracking-[-0.03em] text-emerald-400'
@@ -173,45 +169,41 @@ export default function ManualTestingPage() {
         </div>
       </Aurora>
 
-      {/* Intro — offset editorial */}
+      {/* Intro */}
       <section className='border-b border-neutral-200 bg-white py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <div className='grid items-center gap-12 lg:grid-cols-12 lg:gap-16'>
             <Reveal className='lg:col-span-5'>
               <div className='overflow-hidden rounded-2xl border border-neutral-200'>
-                <img
-                  src='https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop'
-                  alt='QA team reviewing test results'
-                  className='h-[320px] w-full object-cover md:h-[420px]'
-                />
+                <PipelineFlowDiagram />
               </div>
             </Reveal>
             <div className='lg:col-span-7 lg:pl-4'>
               <Reveal delay={0.08}>
                 <p className='text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700'>
-                  Expert manual QA
+                  Scalable automation
                 </p>
                 <h2 className='mt-4 max-w-xl text-4xl font-light leading-tight tracking-tight text-neutral-900 sm:text-5xl'>
-                  Reliable software,{" "}
+                  Intelligent solutions,{" "}
                   <span className='font-extrabold text-emerald-800'>
-                    any platform.
+                    consistent quality.
                   </span>
                 </h2>
                 <div className='mt-6 max-w-lg space-y-4 text-base leading-relaxed text-neutral-600 md:text-lg md:font-light'>
                   <p>
-                    We deliver expert manual testing services to ensure
-                    high-quality, reliable, and user-focused software across any
-                    platform, technology, or domain.
+                    We provide robust automation testing services to accelerate
+                    delivery, improve coverage, and ensure consistent quality
+                    across web and mobile applications.
                   </p>
                   <p>
-                    Our services include end-to-end testing, from test strategy
-                    and planning through scenarios, cases, execution, and defect
-                    management, ensuring complete validation of your application.
+                    Our solutions are scalable, maintainable, and aligned with
+                    modern engineering practices—from framework design through
+                    CI/CD integration and continuous testing.
                   </p>
                   <p>
-                    With real-world usage, risk-based testing, and relentless
-                    attention to detail, we help you find issues early, improve
-                    quality, and ship with confidence.
+                    Whether you are building from scratch or modernizing an
+                    existing suite, we help you ship faster with automation that
+                    lasts.
                   </p>
                 </div>
               </Reveal>
@@ -220,32 +212,35 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Services — bento grid */}
+      {/* Comprehensive automation solutions — bento grid */}
       <section className='bg-emerald-50/70 py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mb-14 max-w-2xl'>
             <h2 className='text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl'>
               Comprehensive{" "}
               <span className='font-light text-emerald-800'>
-                Testing Solutions
+                Automation Solutions
               </span>
             </h2>
             <p className='mt-4 text-lg text-neutral-600 md:text-xl'>
-              Full-cycle manual QA, from planning through execution and defect
-              management.
+              Full-stack automation from strategy and frameworks through
+              execution, AI enhancement, and pipeline integration.
             </p>
           </Reveal>
 
-          <RevealStagger className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2' stagger={0.07}>
+          <RevealStagger
+            className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2'
+            stagger={0.07}
+          >
             {SERVICES.map((service) => (
               <RevealItem
                 key={service.title}
                 className={cn(
                   "rounded-2xl border border-emerald-200/80 bg-white p-6 md:p-8",
                   service.span,
-                  (service.emphasis || service.icon === "ai") &&
+                  (service.emphasis || service.icon === "accent") &&
                     "lg:flex lg:flex-col lg:justify-between",
-                  service.icon === "ai" &&
+                  service.icon === "accent" &&
                     "border-emerald-300/80 bg-emerald-50/50"
                 )}
               >
@@ -254,10 +249,10 @@ export default function ManualTestingPage() {
                     className={cn(
                       service.emphasis &&
                         "text-2xl font-extrabold tracking-tight text-emerald-800 md:text-3xl",
-                      service.icon === "ai" &&
+                      service.icon === "accent" &&
                         "text-lg font-extrabold tracking-tight text-emerald-900 md:text-xl",
                       !service.emphasis &&
-                        service.icon !== "ai" &&
+                        service.icon !== "accent" &&
                         "text-base font-bold uppercase tracking-wide text-emerald-800"
                     )}
                   >
@@ -288,13 +283,13 @@ export default function ManualTestingPage() {
                     </ul>
                   )}
                 </div>
-                {service.icon === "planning" && (
-                  <ClipboardList
+                {service.icon === "featured" && (
+                  <Cog
                     className='mt-8 h-10 w-10 text-emerald-700/40'
                     strokeWidth={1.25}
                   />
                 )}
-                {service.icon === "ai" && (
+                {service.icon === "accent" && (
                   <Sparkles
                     className='mt-6 h-8 w-8 text-emerald-600'
                     strokeWidth={1.5}
@@ -306,26 +301,31 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Process — sticky headline + step list */}
+      {/* Process */}
       <section className='bg-neutral-100 py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <div className='grid gap-16 lg:grid-cols-2'>
             <Reveal className='lg:sticky lg:top-28 lg:self-start'>
               <p className='font-mono text-xs font-medium uppercase tracking-widest text-neutral-500'>
-                End-to-end coverage
+                End-to-end delivery
               </p>
               <h2 className='mt-4 text-4xl font-extrabold leading-[1.1] text-neutral-900 sm:text-5xl'>
-                Strategy through
+                Design through
                 <br />
-                <span className='font-light text-emerald-800'>sign-off.</span>
+                <span className='font-light text-emerald-800'>
+                  continuous testing.
+                </span>
               </h2>
               <p className='mt-6 max-w-md text-base leading-relaxed text-neutral-600'>
-                Every engagement spans the full testing lifecycle so nothing
-                slips between planning and production.
+                Every engagement spans the full automation lifecycle so your
+                suites stay reliable as your product evolves.
               </p>
             </Reveal>
 
-            <RevealStagger className='space-y-0 border-t border-neutral-300' stagger={0.1}>
+            <RevealStagger
+              className='space-y-0 border-t border-neutral-300'
+              stagger={0.1}
+            >
               {PROCESS.map((item, idx) => (
                 <RevealItem
                   key={item.step}
@@ -351,27 +351,27 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Tools & methodologies */}
+      {/* Tools & modern practices */}
       <section className='py-20 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mx-auto mb-14 max-w-3xl text-center'>
             <h2 className='text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl'>
-              Industry-Standard Tools
+              Tools, Technologies
               <br />
               <span className='font-light text-emerald-800'>
-                and Modern Techniques
+                & Modern Practices
               </span>
             </h2>
             <p className='mt-4 text-lg text-neutral-600 md:text-xl'>
-              We use leading tools and proven practices to deliver efficient,
-              high-quality testing across your stack.
+              Industry-standard automation tools paired with proven practices
+              for efficient, high-quality coverage.
             </p>
           </Reveal>
 
           <div className='grid gap-12 lg:grid-cols-2 lg:gap-16'>
             <Reveal>
               <p className='mb-6 text-sm font-bold uppercase tracking-wide text-emerald-800'>
-                Tools & platforms
+                Automation tools & technologies
               </p>
               <RevealStagger className='flex flex-wrap gap-2' stagger={0.04}>
                 {TOOLS.map((tool) => (
@@ -386,7 +386,7 @@ export default function ManualTestingPage() {
 
             <Reveal delay={0.08}>
               <p className='mb-6 text-sm font-bold uppercase tracking-wide text-emerald-800'>
-                Methodologies & practices
+                Advanced practices
               </p>
               <RevealStagger className='flex flex-wrap gap-2' stagger={0.04}>
                 {METHODOLOGIES.map((method) => (
@@ -402,12 +402,12 @@ export default function ManualTestingPage() {
         </div>
       </section>
 
-      {/* Strengths — dark green band */}
+      {/* What sets us apart */}
       <section className='bg-emerald-950 py-20 text-emerald-50 lg:py-28'>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mb-14 text-center lg:text-left'>
             <h2 className='text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl'>
-              What Sets Us Apart
+              What Sets Our Automation Apart
             </h2>
           </Reveal>
           <RevealStagger
@@ -448,14 +448,14 @@ export default function ManualTestingPage() {
       <section className='border-y border-emerald-200/60 bg-emerald-50/50 py-24 lg:py-32'>
         <Reveal className='container mx-auto max-w-4xl px-4 text-center md:px-6'>
           <p className='text-2xl font-light leading-snug text-neutral-800 sm:text-3xl md:text-4xl lg:text-5xl'>
-            Identify issues early.
+            Accelerate delivery.
           </p>
           <p className='mt-4 text-3xl font-extrabold tracking-tight text-emerald-900 sm:text-4xl md:text-5xl lg:text-6xl'>
-            Release with confidence.
+            Automate with confidence.
           </p>
           <p className='mx-auto mt-8 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg'>
-            User-focused validation, risk-based coverage, and production-ready
-            software that supports real business outcomes.
+            Scalable frameworks, continuous testing, and consistent quality across
+            every release cycle.
           </p>
         </Reveal>
       </section>
@@ -469,13 +469,13 @@ export default function ManualTestingPage() {
                 Start a conversation
               </p>
               <h2 className='mt-3 text-3xl font-extrabold text-neutral-900 sm:text-4xl'>
-                Ready to elevate your software quality?
+                Ready to scale your test automation?
               </h2>
             </div>
             <div className='md:text-right'>
               <p className='text-base text-neutral-600 md:ml-auto md:max-w-sm md:text-lg'>
-                Share your platform, timeline, and goals. We will propose a
-                tailored manual testing approach for your team.
+                Share your stack, coverage goals, and timeline. We will propose a
+                tailored automation approach for your team.
               </p>
               <div className='mt-8 flex flex-col gap-3 min-[400px]:flex-row md:justify-end'>
                 <Button

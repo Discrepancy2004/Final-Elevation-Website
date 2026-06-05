@@ -13,14 +13,14 @@ import {
 import { useState } from "react"
 import {
   Wrench,
-  Accessibility,
+  Sparkles,
   Smartphone,
   Workflow,
   Users as UsersIcon,
   ClipboardCheck,
   Gauge,
-  Activity,
   Shield as ShieldIcon,
+  Accessibility,
 } from "lucide-react"
 
 export function NavbarDemo() {
@@ -36,27 +36,27 @@ export function NavbarDemo() {
       dropdownItems: [
         {
           name: "Automation Testing",
-          link: "/services/web-development",
+          link: "/automation_testing",
           icon: <Wrench className='w-4 h-4' />,
         },
         {
-          name: "Accessibility Testing",
-          link: "/services/mobile-development",
-          icon: <Accessibility className='w-4 h-4' />,
+          name: "AI Testing Solutions",
+          link: "/ai_testing",
+          icon: <Sparkles className='w-4 h-4' />,
         },
         {
           name: "Mobile Application",
-          link: "/services/ui-ux-design",
+          link: "/mobile_testing",
           icon: <Smartphone className='w-4 h-4' />,
         },
         {
           name: "ETL Testing",
-          link: "/services/qa-testing",
+          link: "/etl_testing",
           icon: <Workflow className='w-4 h-4' />,
         },
         {
           name: "Software QA Outsourcing",
-          link: "/services/devops",
+          link: "/qa_outsourcing",
           icon: <UsersIcon className='w-4 h-4' />,
         },
         {
@@ -66,17 +66,17 @@ export function NavbarDemo() {
         },
         {
           name: "Non-Functional Testing",
-          link: "/services/database-design",
+          link: "/non_functional_testing",
           icon: <Gauge className='w-4 h-4' />,
         },
         {
-          name: "Performance Testing",
-          link: "/services/api-development",
-          icon: <Activity className='w-4 h-4' />,
+          name: "Accessibility Testing",
+          link: "/accessibility_testing",
+          icon: <Accessibility className='w-4 h-4' />,
         },
         {
           name: "Security Testing",
-          link: "/services/security-auditing",
+          link: "/security_testing",
           icon: <ShieldIcon className='w-4 h-4' />,
         },
       ],
