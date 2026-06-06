@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" role="img" aria-label="Successful test run in terminal">
+  <rect width="400" height="400" rx="24" fill="#ecfdf5"/>
+  <rect x="28" y="28" width="344" height="344" rx="18" fill="#111827"/>
+  <rect x="28" y="28" width="344" height="44" rx="18" fill="#1f2937"/>
+  <circle cx="52" cy="50" r="7" fill="#ef4444"/>
+  <circle cx="74" cy="50" r="7" fill="#f59e0b"/>
+  <circle cx="96" cy="50" r="7" fill="#22c55e"/>
+  <text x="120" y="56" fill="#94a3b8" font-family="monospace" font-size="14">qa-runner - bash</text>
+  <text x="48" y="98" fill="#4ade80" font-family="monospace" font-size="15">$ npm run test:ci</text>
+  <text x="48" y="128" fill="#cbd5e1" font-family="monospace" font-size="13">&gt; jest --runInBand</text>
+  <text x="48" y="162" fill="#bbf7d0" font-family="monospace" font-size="13"> PASS  auth/login.test.ts</text>
+  <text x="48" y="186" fill="#bbf7d0" font-family="monospace" font-size="13"> PASS  api/orders.test.ts</text>
+  <text x="48" y="210" fill="#bbf7d0" font-family="monospace" font-size="13"> PASS  ui/checkout.test.ts</text>
+  <rect x="48" y="232" width="304" height="56" rx="12" fill="#14532d"/>
+  <text x="64" y="258" fill="#86efac" font-family="monospace" font-size="14" font-weight="700">Test Suites: 3 passed, 3 total</text>
+  <text x="64" y="278" fill="#4ade80" font-family="monospace" font-size="14" font-weight="700">Tests: 24 passed, 24 total</text>
+  <circle cx="320" cy="318" r="28" fill="#22c55e"/>
+  <path d="M308 318l8 8 16-18" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

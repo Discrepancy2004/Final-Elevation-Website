@@ -5,13 +5,10 @@ import createGlobe from "cobe"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "motion/react"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { DefectTrackingTerminal } from "@/components/home/defect-tracking-terminal"
+import { ToolsFrameworksSection } from "@/components/home/tools-frameworks-section"
+import { HomeThemeToggle } from "@/components/home/home-theme-toggle"
+import { homeSectionGradients } from "@/components/home/home-section-gradients"
 import { Badge } from "@/components/ui/badge"
 import {
   CheckCircle,
@@ -59,13 +56,14 @@ export function FeaturesSectionDemo() {
       description:
         "Systematic execution of test cases with detailed analysis of results, ensuring thorough validation of functionality.",
       skeleton: <SkeletonTwo />,
-      className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
+      className:
+        "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
     {
       title: "Defect Tracking & Reporting",
       description:
         "Comprehensive defect documentation and management with clear reporting to facilitate swift resolution and quality improvement.",
-      skeleton: <SkeletonThree />,
+      skeleton: <DefectTrackingTerminal />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
     },
@@ -74,7 +72,9 @@ export function FeaturesSectionDemo() {
       description:
         "Final quality verification and seamless deployment with continuous monitoring to ensure production-ready software.",
       skeleton: <SkeletonFour />,
-      className: "col-span-1 lg:col-span-3 border-b lg:border-none",
+      className:
+        "col-span-1 lg:col-span-3 overflow-visible border-b lg:border-none",
+      skeletonOverflow: "visible" as const,
     },
   ]
   return (
@@ -94,12 +94,27 @@ export function FeaturesSectionDemo() {
       </div>
 
       <div className='relative'>
-        <div className='mt-12 grid grid-cols-1 lg:grid-cols-6 xl:rounded-md xl:border dark:border-neutral-800'>
+        <div className='mt-12 grid grid-cols-1 overflow-visible lg:grid-cols-6 xl:rounded-md xl:border dark:border-neutral-800'>
           {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
+            <FeatureCard
+              key={feature.title}
+              className={feature.className}
+              overflow={
+                feature.skeletonOverflow === "visible" ? "visible" : "hidden"
+              }
+            >
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className='h-full w-full'>{feature.skeleton}</div>
+              <div
+                className={cn(
+                  "h-full w-full",
+                  feature.skeletonOverflow === "visible"
+                    ? "overflow-visible"
+                    : "overflow-hidden"
+                )}
+              >
+                {feature.skeleton}
+              </div>
             </FeatureCard>
           ))}
         </div>
@@ -111,12 +126,20 @@ export function FeaturesSectionDemo() {
 const FeatureCard = ({
   children,
   className,
+  overflow = "hidden",
 }: {
   children?: React.ReactNode
   className?: string
+  overflow?: "hidden" | "visible"
 }) => {
   return (
-    <div className={cn(`p-4 sm:p-8 relative overflow-hidden`, className)}>
+    <div
+      className={cn(
+        "relative p-4 sm:p-8",
+        overflow === "visible" ? "overflow-visible" : "overflow-hidden",
+        className
+      )}
+    >
       {children}
     </div>
   )
@@ -146,132 +169,120 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 
 export const SkeletonOne = () => {
   return (
-    <div className='relative flex py-8 px-2 gap-10 h-full'>
-      <div className='w-full  p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full'>
-        <div className='flex flex-1 w-full h-full flex-col space-y-2  '>
+    <div className='relative flex h-full py-8 px-2'>
+      <div className='mx-auto h-full w-full bg-white p-5 shadow-2xl dark:bg-neutral-900'>
+        <div className='flex h-full w-full flex-1 flex-col'>
           <img
-            src='https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop'
-            alt='Test planning and strategy'
+            src='/images/test-planning-strategy.svg'
+            alt='Test planning and strategy workshop with coverage matrix and test plan'
             width={800}
-            height={800}
-            className='h-full w-full aspect-square object-cover object-left-top rounded-sm'
+            height={600}
+            className='h-full w-full rounded-sm object-cover object-center'
           />
         </div>
       </div>
 
-      <div className='absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none' />
-      <div className='absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none' />
-    </div>
-  )
-}
-
-export const SkeletonThree = () => {
-  return (
-    <div className='relative flex gap-10  h-full group/image'>
-      <div className='w-full  mx-auto bg-transparent dark:bg-transparent group h-full'>
-        <div className='flex flex-1 w-full h-full flex-col space-y-2  relative'>
-          <img
-            src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop'
-            alt='Defect tracking and reporting'
-            width={800}
-            height={800}
-            className='h-full w-full aspect-square object-cover object-center rounded-sm'
-          />
-        </div>
-      </div>
+      <div className='pointer-events-none absolute inset-x-0 bottom-0 z-40 h-32 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-neutral-900 dark:via-neutral-900/80' />
     </div>
   )
 }
 
 export const SkeletonTwo = () => {
   const images = [
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop",
+    {
+      src: "/images/test-exec-code.svg",
+      alt: "Automated test case code with a passing spec run",
+    },
+    {
+      src: "/images/test-exec-terminal.svg",
+      alt: "Terminal showing all test suites passed successfully",
+    },
+    {
+      src: "/images/test-exec-results.svg",
+      alt: "Test results panel with green passed checks",
+    },
+    {
+      src: "/images/test-exec-ci.svg",
+      alt: "CI pipeline with successful test stage and build success",
+    },
   ]
 
-  // Generate rotations only on client to avoid hydration mismatch
-  const [firstRowRotations, setFirstRowRotations] = useState<number[]>([])
-  const [secondRowRotations, setSecondRowRotations] = useState<number[]>([])
-
-  useEffect(() => {
-    // Generate random rotations only on client side
-    setFirstRowRotations(images.map(() => Math.random() * 20 - 10))
-    setSecondRowRotations(images.map(() => Math.random() * 20 - 10))
-  }, [images.length])
+  const firstRow = images.slice(0, 3)
+  const secondRow = [images[3], images[0], images[1]]
+  const firstRowRotations = [-8, 6, -5]
+  const secondRowRotations = [9, -6, 5]
 
   const imageVariants = {
     whileHover: {
-      scale: 1.1,
+      scale: 1.08,
       rotate: 0,
-      zIndex: 100,
+      zIndex: 20,
     },
     whileTap: {
-      scale: 1.1,
+      scale: 1.05,
       rotate: 0,
-      zIndex: 100,
+      zIndex: 20,
     },
   }
+
+  const tileClassName =
+    "-mr-5 mt-1 shrink-0 overflow-hidden rounded-xl border border-neutral-100 bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800 md:-mr-6 md:mt-2"
+  const imgClassName =
+    "h-20 w-20 shrink-0 rounded-lg object-contain sm:h-24 sm:w-24 md:h-32 md:w-32 lg:h-36 lg:w-36"
+
   return (
-    <div className='relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden'>
-      {/* TODO */}
-      <div className='flex flex-row -ml-20'>
-        {images.map((image, idx) => (
+    <div className='relative mx-auto flex h-full max-h-full w-full flex-col items-center justify-center gap-4 overflow-hidden py-3 md:gap-5 md:py-4'>
+      <div className='flex flex-row justify-center'>
+        {firstRow.map((image, idx) => (
           <motion.div
             variants={imageVariants}
-            key={"images-first" + idx}
-            style={{
-              rotate: firstRowRotations[idx] || 0,
-            }}
+            key={`test-exec-first-${idx}`}
+            style={{ rotate: firstRowRotations[idx] }}
             whileHover='whileHover'
             whileTap='whileTap'
-            className='rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden'
+            className={tileClassName}
           >
             <img
-              src={image}
-              alt='QA testing process'
-              width='500'
-              height='500'
-              className='rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover shrink-0'
+              src={image.src}
+              alt={image.alt}
+              width={400}
+              height={400}
+              className={imgClassName}
             />
           </motion.div>
         ))}
       </div>
-      <div className='flex flex-row'>
-        {images.map((image, idx) => (
+      <div className='flex flex-row justify-center pl-4 md:pl-6'>
+        {secondRow.map((image, idx) => (
           <motion.div
-            key={"images-second" + idx}
-            style={{
-              rotate: secondRowRotations[idx] || 0,
-            }}
+            key={`test-exec-second-${idx}`}
+            style={{ rotate: secondRowRotations[idx] }}
             variants={imageVariants}
             whileHover='whileHover'
             whileTap='whileTap'
-            className='rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden'
+            className={tileClassName}
           >
             <img
-              src={image}
-              alt='QA testing process'
-              width='500'
-              height='500'
-              className='rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover shrink-0'
+              src={image.src}
+              alt={image.alt}
+              width={400}
+              height={400}
+              className={imgClassName}
             />
           </motion.div>
         ))}
       </div>
 
-      <div className='absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none' />
-      <div className='absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none' />
+      <div className='pointer-events-none absolute inset-y-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-white to-transparent dark:from-black md:w-12' />
+      <div className='pointer-events-none absolute inset-y-0 right-0 z-10 h-full w-8 bg-gradient-to-l from-white to-transparent dark:from-black md:w-12' />
     </div>
   )
 }
 
 export const SkeletonFour = () => {
   return (
-    <div className='h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10'>
-      <CobeGlobe className='absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72' />
+    <div className='relative flex w-full min-h-[320px] flex-col items-center justify-center overflow-visible px-4 py-6 sm:px-6 md:min-h-[400px] md:py-8 lg:min-h-[440px]'>
+      <CobeGlobe className='mx-auto w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]' />
     </div>
   )
 }
@@ -292,6 +303,7 @@ export const CobeGlobe = ({ className }: { className?: string }) => {
       theta: 0,
       dark: 1,
       diffuse: 1.2,
+      scale: 0.84,
       mapSamples: 16000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
@@ -316,11 +328,13 @@ export const CobeGlobe = ({ className }: { className?: string }) => {
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
-      className={className}
-    />
+    <div className={cn("relative aspect-square w-full overflow-visible", className)}>
+      <canvas
+        ref={canvasRef}
+        className='h-full w-full'
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
   )
 }
 
@@ -355,74 +369,65 @@ export const projects = [
   {
     title: "Automation Testing",
     description:
-      "Streamline your testing process with cutting-edge automation tools and frameworks.",
+      "Accelerate release cycles with robust, maintainable test automation built on industry-leading frameworks. We design scalable suites for UI, API, and integration layers — integrated directly into your CI/CD pipeline.",
     link: "/automation_testing",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
+    color: "#0D4F3C",
   },
   {
     title: "AI Testing Solutions",
     description:
-      "AI-generated test plans, scenarios, and cases that accelerate delivery and strengthen coverage.",
+      "Harness artificial intelligence to generate test plans, scenarios, and cases that adapt as your product evolves. Our AI-assisted approach identifies coverage gaps and reduces manual effort without sacrificing rigour.",
     link: "/ai_testing",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
+    color: "#1E1B4B",
   },
   {
     title: "Mobile Application",
     description:
-      "Comprehensive testing for iOS and Android applications across all devices and platforms.",
+      "Validate iOS and Android applications across real devices, emulators, and varying network conditions. We cover functional flows, OS compatibility, and performance under load.",
     link: "/mobile_testing",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2000&auto=format&fit=crop",
+    color: "#0F4C5C",
   },
   {
     title: "ETL Testing",
     description:
-      "Validate data transformation processes ensuring integrity and accuracy throughout pipelines.",
+      "Ensure data integrity across extraction, transformation, and loading pipelines with rigorous validation at every stage. We verify source-to-target mappings, reconciliation totals, and error handling under volume.",
     link: "/etl_testing",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+    color: "#1A365D",
   },
   {
     title: "Software QA Outsourcing",
     description:
-      "Scale your QA capabilities with dedicated testing teams that integrate seamlessly.",
+      "Extend your quality assurance capacity with dedicated testing teams that integrate seamlessly into your workflow. From sprint-level execution to full programme ownership, we provide the expertise you need without the overhead of hiring.",
     link: "/qa_outsourcing",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop",
+    color: "#4C1D2E",
   },
   {
     title: "Manual Testing",
     description:
-      "Expert manual testing services to catch issues automated tests might miss.",
+      "Leverage the judgement of experienced QA professionals who explore your application the way real users would. We conduct functional, usability, exploratory, and regression testing with meticulous attention to detail.",
     link: "/manual_testing",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
+    color: "#14532D",
   },
   {
     title: "Non-Functional Testing",
     description:
-      "Comprehensive testing of performance, scalability, reliability, and usability requirements.",
+      "Validate performance, scalability, reliability, and usability requirements before they become production incidents. We stress-test under realistic load and measure response times at scale.",
     link: "/non_functional_testing",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+    color: "#3B0764",
   },
   {
     title: "Accessibility Testing",
     description:
-      "Ensure your applications are usable by everyone with WCAG-aligned accessibility validation.",
+      "Ensure your applications are inclusive and compliant with WCAG standards so every user can engage fully with your product. We evaluate screen reader compatibility, keyboard navigation, and colour contrast.",
     link: "/accessibility_testing",
-    image:
-      "https://images.unsplash.com/photo-1573164713714-d95f43633508?q=80&w=2000&auto=format&fit=crop",
+    color: "#1E3A8A",
   },
   {
     title: "Security Testing",
     description:
-      "Protect applications from vulnerabilities with penetration testing and security assessments.",
+      "Protect your applications and data with comprehensive vulnerability assessments and penetration testing. We identify authentication flaws, injection risks, and compliance gaps before attackers do.",
     link: "/security_testing",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2000&auto=format&fit=crop",
+    color: "#292524",
   },
 ]
 
@@ -481,6 +486,7 @@ export default function HomePage() {
   return (
     <div className='min-h-screen bg-background'>
       <NavbarDemo />
+      <HomeThemeToggle />
 
       {/* Hero Section */}
       <div className='flex flex-col overflow-hidden'>
@@ -625,7 +631,6 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-
       <div className='container mx-auto max-w-7xl px-4 pb-10 pt-20 md:px-6'>
         <Reveal className='mb-12 text-center'>
           <p className='text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700'>
@@ -644,9 +649,7 @@ export default function HomePage() {
           </p>
         </Reveal>
 
-        <div className='mx-auto max-w-5xl px-4 md:px-8'>
-          <HoverEffect items={projects} />
-        </div>
+        <HoverEffect items={projects} />
       </div>
 
       {/* Services Preview 
@@ -851,61 +854,7 @@ export default function HomePage() {
       </section>
       */}
 
-      {/* Technology Stack */}
-      <section className='min-h-screen flex items-center justify-center py-20 bg-muted/50'>
-        <div className='container px-4 md:px-6 max-w-7xl mx-auto'>
-          <Reveal className='mb-12 text-center'>
-            <p className='text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500'>
-              Technology Stack
-            </p>
-            <h2 className='mt-3 text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl'>
-              Tools & <span className='font-light text-emerald-800 dark:text-emerald-400'>Frameworks</span>
-            </h2>
-            <p className='mx-auto mt-4 max-w-3xl text-lg font-normal text-neutral-600 dark:text-neutral-400 md:text-xl'>
-              We use the latest tools and technologies to deliver comprehensive
-              testing solutions.
-            </p>
-          </Reveal>
-          <RevealStagger className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' stagger={0.05}>
-            {[
-              { title: "Web Automation", description: "Cross-browser UI & regression suites", icon: Globe },
-              { title: "API Testing", description: "REST, GraphQL & contract validation", icon: Code },
-              { title: "Mobile Testing", description: "iOS, Android & responsive validation", icon: Smartphone },
-              { title: "Accessibility", description: "WCAG audits & inclusive UX validation", icon: Accessibility },
-              { title: "Security", description: "Vulnerability scans & penetration testing", icon: Shield },
-              { title: "Test Management", description: "Case design, traceability & reporting", icon: Award },
-              { title: "CI/CD Pipelines", description: "Automated gates in your release flow", icon: Zap },
-              { title: "Manual QA", description: "Exploratory, usability & acceptance testing", icon: Users },
-            ].map((item, idx) => (
-              <RevealItem key={item.title}>
-              <Card className='text-center'>
-                <CardContent className='px-6 pt-10 pb-8'>
-                  <div className='mx-auto mb-5 flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-emerald-50 dark:bg-emerald-950/40'>
-                    <item.icon
-                      className='h-7 w-7 shrink-0 text-emerald-800 dark:text-emerald-400'
-                      strokeWidth={1.75}
-                    />
-                  </div>
-                  <h3
-                    className={cn(
-                      "mb-2 text-neutral-900 dark:text-white",
-                      idx % 2 === 0
-                        ? "text-lg font-extrabold tracking-tight md:text-xl"
-                        : "text-base font-semibold uppercase tracking-wide md:text-lg"
-                    )}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className='text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400 md:text-base'>
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
-              </RevealItem>
-            ))}
-          </RevealStagger>
-        </div>
-      </section>
+      <ToolsFrameworksSection />
 
       {/* Case Studies Preview 
       <section className='min-h-screen flex items-center justify-center py-20'>
@@ -1036,19 +985,19 @@ export default function HomePage() {
       */}
 
       {/* CTA Section */}
-      <section className='flex items-center justify-center bg-emerald-50/60 py-16 md:py-24 dark:bg-emerald-950/20'>
+      <section className={`${homeSectionGradients.cta} flex items-center justify-center py-16 md:py-24`}>
         <div className='container mx-auto max-w-7xl px-4 md:px-6'>
           <Reveal className='mx-auto max-w-3xl space-y-6 text-center'>
-            <p className='text-sm font-semibold uppercase tracking-[0.25em] text-emerald-800'>
+            <p className='text-sm font-semibold uppercase tracking-[0.25em] text-emerald-700 dark:text-emerald-400'>
               Get started
             </p>
             <h2 className='text-4xl font-light leading-tight tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl'>
               Ready to improve your{" "}
-              <span className='font-extrabold text-emerald-900 dark:text-emerald-400'>
+              <span className='font-extrabold text-emerald-800 dark:text-emerald-400'>
                 software quality?
               </span>
             </h2>
-            <p className='mx-auto max-w-xl text-lg font-normal leading-relaxed text-neutral-600 dark:text-neutral-400 md:text-xl'>
+            <p className='mx-auto max-w-xl text-lg font-normal leading-relaxed text-neutral-600 dark:text-emerald-100/85 md:text-xl'>
               Get started with a free consultation and see how our QA experts
               can help your project succeed.
             </p>
@@ -1067,7 +1016,7 @@ export default function HomePage() {
                 variant='outline'
                 size='lg'
                 asChild
-                className='transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]'
+                className='border-emerald-700 bg-transparent text-emerald-800 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-emerald-50 hover:text-emerald-900 active:scale-[0.97] dark:border-emerald-400/50 dark:text-white dark:hover:bg-emerald-800/50 dark:hover:text-white'
               >
                 <Link href='/about'>Learn More About Us</Link>
               </Button>

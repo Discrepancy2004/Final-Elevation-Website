@@ -125,7 +125,7 @@ export default function ContactPage() {
                   {
                     icon: Phone,
                     label: "Phone",
-                    lines: ["+1 (555) 123-4567"],
+                    lines: ["+61 48 555 0685"],
                   },
                   {
                     icon: MapPin,

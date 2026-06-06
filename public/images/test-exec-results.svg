@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" role="img" aria-label="All tests passed results panel">
+  <rect width="400" height="400" rx="24" fill="#ffffff"/>
+  <rect x="24" y="24" width="352" height="72" rx="16" fill="#059669"/>
+  <circle cx="56" cy="60" r="18" fill="#ecfdf5"/>
+  <path d="M48 60l6 6 14-16" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="56" fill="#ecfdf5" font-family="sans-serif" font-size="22" font-weight="700">All tests passed</text>
+  <text x="88" y="78" fill="#bbf7d0" font-family="sans-serif" font-size="14">Execution completed successfully</text>
+  <rect x="24" y="116" width="352" height="56" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <circle cx="52" cy="144" r="12" fill="#22c55e"/>
+  <path d="M47 144l3 3 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="140" fill="#14532d" font-family="monospace" font-size="14" font-weight="600">should validate payment flow</text>
+  <text x="76" y="158" fill="#16a34a" font-family="monospace" font-size="12">passed - 89ms</text>
+  <rect x="24" y="184" width="352" height="56" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <circle cx="52" cy="212" r="12" fill="#22c55e"/>
+  <path d="M47 212l3 3 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="208" fill="#14532d" font-family="monospace" font-size="14" font-weight="600">should submit order API</text>
+  <text x="76" y="226" fill="#16a34a" font-family="monospace" font-size="12">passed - 56ms</text>
+  <rect x="24" y="252" width="352" height="56" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <circle cx="52" cy="280" r="12" fill="#22c55e"/>
+  <path d="M47 280l3 3 7-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="276" fill="#14532d" font-family="monospace" font-size="14" font-weight="600">should render confirmation UI</text>
+  <text x="76" y="294" fill="#16a34a" font-family="monospace" font-size="12">passed - 112ms</text>
+  <rect x="24" y="328" width="168" height="48" rx="12" fill="#dcfce7"/>
+  <text x="40" y="358" fill="#166534" font-family="monospace" font-size="16" font-weight="700">100% pass rate</text>
+</svg>

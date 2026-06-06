@@ -106,7 +106,7 @@ export function NavbarDemo() {
               setIsServicesDropdownOpen(isOpen)
             }
           />
-          <div className='flex items-center gap-4'>
+          <div className='flex shrink-0 items-center'>
             <NavbarButton variant='primary' href='/contact'>Book a call</NavbarButton>
           </div>
         </NavBody>

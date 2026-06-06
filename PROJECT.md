@@ -140,7 +140,7 @@ Until then, treat the form as **UI-only**.
 **Contact info (placeholder):**
 
 - Email: `info@qualitypro.com`
-- Phone: `+1 (555) 123-4567`
+- Phone: `+61 48 555 0685`
 - Location: San Francisco, CA
 
 **Copyright:** `© {year} QualityPro. All rights reserved.`
@@ -486,7 +486,7 @@ Includes: “Trusted by 500+ Companies”, “Quality Assurance That Delivers Ex
 | Channel | Content |
 |---------|---------|
 | Email | info@qualitypro.com, sales@qualitypro.com |
-| Phone | +1 (555) 123-4567, +1 (555) 123-4568 |
+| Phone | +61 48 555 0685 |
 | Office | 123 Tech Street, Suite 400, San Francisco, CA 94105, United States |
 | Business Hours | Monday - Friday: 9:00 AM - 6:00 PM PST; Saturday: 10:00 AM - 2:00 PM PST; Sunday: Closed |
 
@@ -519,7 +519,7 @@ Includes: “Trusted by 500+ Companies”, “Quality Assurance That Delivers Ex
 
 | Channel | Title | Description | Details |
 |---------|-------|-------------|---------|
-| Phone | Phone Support | Speak directly with our QA experts | +1 (555) 123-4567 — Mon-Fri: 9AM-6PM PST |
+| Phone | Phone Support | Speak directly with our QA experts | +61 48 555 0685 — Mon-Fri: 9AM-6PM PST |
 | Email | Email Support | Detailed inquiries and documentation | info@qualitypro.com — 24-hour response time |
 | Video | Video Consultation | Face-to-face project discussions | Schedule Online — 30-60 minute sessions |
 | Emergency | Emergency Support | Critical issue resolution | 24/7 Hotline — Enterprise clients only |
