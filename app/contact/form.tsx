@@ -2,21 +2,11 @@
 
 import { useState, type FormEvent } from "react"
 import { Loader2 } from "lucide-react"
+import { SITE_SERVICE_LABELS } from "@/lib/site-services"
 
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
-const SERVICE_OPTIONS = [
-  "Automation Testing",
-  "AI Testing Solutions",
-  "Mobile Application",
-  "ETL Testing",
-  "Software QA Outsourcing",
-  "Manual Testing",
-  "Non-Functional Testing",
-  "Accessibility Testing",
-  "Security Testing",
-  "Other",
-]
+const SERVICE_OPTIONS = [...SITE_SERVICE_LABELS, "Other"]
 
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle")

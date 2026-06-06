@@ -10,7 +10,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/header"
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 import {
   Wrench,
   Sparkles,
@@ -22,6 +22,19 @@ import {
   Shield as ShieldIcon,
   Accessibility,
 } from "lucide-react"
+import { SITE_SERVICES } from "@/lib/site-services"
+
+const SERVICE_ICONS: Record<string, ReactNode> = {
+  "/ai_testing": <Sparkles className='w-4 h-4' />,
+  "/automation_testing": <Wrench className='w-4 h-4' />,
+  "/manual_testing": <ClipboardCheck className='w-4 h-4' />,
+  "/accessibility_testing": <Accessibility className='w-4 h-4' />,
+  "/mobile_testing": <Smartphone className='w-4 h-4' />,
+  "/etl_testing": <Workflow className='w-4 h-4' />,
+  "/non_functional_testing": <Gauge className='w-4 h-4' />,
+  "/security_testing": <ShieldIcon className='w-4 h-4' />,
+  "/qa_outsourcing": <UsersIcon className='w-4 h-4' />,
+}
 
 export function NavbarDemo() {
   const navItems = [
@@ -33,53 +46,11 @@ export function NavbarDemo() {
       name: "Services",
       link: "/services",
       hasDropdown: true,
-      dropdownItems: [
-        {
-          name: "Automation Testing",
-          link: "/automation_testing",
-          icon: <Wrench className='w-4 h-4' />,
-        },
-        {
-          name: "AI Testing Solutions",
-          link: "/ai_testing",
-          icon: <Sparkles className='w-4 h-4' />,
-        },
-        {
-          name: "Mobile Application",
-          link: "/mobile_testing",
-          icon: <Smartphone className='w-4 h-4' />,
-        },
-        {
-          name: "ETL Testing",
-          link: "/etl_testing",
-          icon: <Workflow className='w-4 h-4' />,
-        },
-        {
-          name: "Software QA Outsourcing",
-          link: "/qa_outsourcing",
-          icon: <UsersIcon className='w-4 h-4' />,
-        },
-        {
-          name: "Manual Testing",
-          link: "/manual_testing",
-          icon: <ClipboardCheck className='w-4 h-4' />,
-        },
-        {
-          name: "Non-Functional Testing",
-          link: "/non_functional_testing",
-          icon: <Gauge className='w-4 h-4' />,
-        },
-        {
-          name: "Accessibility Testing",
-          link: "/accessibility_testing",
-          icon: <Accessibility className='w-4 h-4' />,
-        },
-        {
-          name: "Security Testing",
-          link: "/security_testing",
-          icon: <ShieldIcon className='w-4 h-4' />,
-        },
-      ],
+      dropdownItems: SITE_SERVICES.map((service) => ({
+        name: service.label,
+        link: service.href,
+        icon: SERVICE_ICONS[service.href],
+      })),
     },
     {
       name: "About Us",

@@ -22,7 +22,7 @@ const FAQ_ITEMS = [
   {
     question: "What testing services do you offer?",
     answer:
-      "We provide comprehensive testing services including manual testing, automated testing, accessibility testing, security testing, mobile and web testing, ETL testing, AI testing solutions, and QA outsourcing solutions.",
+      "We provide comprehensive testing services including AI testing solutions, automation testing, manual testing, accessibility testing, mobile application testing, ETL testing, non-functional testing, security testing, and software QA outsourcing.",
   },
   {
     question: "How quickly can you start testing our project?",

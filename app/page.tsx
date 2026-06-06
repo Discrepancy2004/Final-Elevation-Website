@@ -367,6 +367,13 @@ const cards = [
 
 export const projects = [
   {
+    title: "AI Testing Solutions",
+    description:
+      "Harness artificial intelligence to generate test plans, scenarios, and cases that adapt as your product evolves. Our AI-assisted approach identifies coverage gaps and reduces manual effort without sacrificing rigour.",
+    link: "/ai_testing",
+    color: "#1E1B4B",
+  },
+  {
     title: "Automation Testing",
     description:
       "Accelerate release cycles with robust, maintainable test automation built on industry-leading frameworks. We design scalable suites for UI, API, and integration layers — integrated directly into your CI/CD pipeline.",
@@ -374,11 +381,18 @@ export const projects = [
     color: "#0D4F3C",
   },
   {
-    title: "AI Testing Solutions",
+    title: "Manual Testing",
     description:
-      "Harness artificial intelligence to generate test plans, scenarios, and cases that adapt as your product evolves. Our AI-assisted approach identifies coverage gaps and reduces manual effort without sacrificing rigour.",
-    link: "/ai_testing",
-    color: "#1E1B4B",
+      "Leverage the judgement of experienced QA professionals who explore your application the way real users would. We conduct functional, usability, exploratory, and regression testing with meticulous attention to detail.",
+    link: "/manual_testing",
+    color: "#14532D",
+  },
+  {
+    title: "Accessibility Testing",
+    description:
+      "Ensure your applications are inclusive and compliant with WCAG standards so every user can engage fully with your product. We evaluate screen reader compatibility, keyboard navigation, and colour contrast.",
+    link: "/accessibility_testing",
+    color: "#1E3A8A",
   },
   {
     title: "Mobile Application",
@@ -395,20 +409,6 @@ export const projects = [
     color: "#1A365D",
   },
   {
-    title: "Software QA Outsourcing",
-    description:
-      "Extend your quality assurance capacity with dedicated testing teams that integrate seamlessly into your workflow. From sprint-level execution to full programme ownership, we provide the expertise you need without the overhead of hiring.",
-    link: "/qa_outsourcing",
-    color: "#4C1D2E",
-  },
-  {
-    title: "Manual Testing",
-    description:
-      "Leverage the judgement of experienced QA professionals who explore your application the way real users would. We conduct functional, usability, exploratory, and regression testing with meticulous attention to detail.",
-    link: "/manual_testing",
-    color: "#14532D",
-  },
-  {
     title: "Non-Functional Testing",
     description:
       "Validate performance, scalability, reliability, and usability requirements before they become production incidents. We stress-test under realistic load and measure response times at scale.",
@@ -416,18 +416,18 @@ export const projects = [
     color: "#3B0764",
   },
   {
-    title: "Accessibility Testing",
-    description:
-      "Ensure your applications are inclusive and compliant with WCAG standards so every user can engage fully with your product. We evaluate screen reader compatibility, keyboard navigation, and colour contrast.",
-    link: "/accessibility_testing",
-    color: "#1E3A8A",
-  },
-  {
     title: "Security Testing",
     description:
       "Protect your applications and data with comprehensive vulnerability assessments and penetration testing. We identify authentication flaws, injection risks, and compliance gaps before attackers do.",
     link: "/security_testing",
     color: "#292524",
+  },
+  {
+    title: "Software QA Outsourcing",
+    description:
+      "Extend your quality assurance capacity with dedicated testing teams that integrate seamlessly into your workflow. From sprint-level execution to full programme ownership, we provide the expertise you need without the overhead of hiring.",
+    link: "/qa_outsourcing",
+    color: "#4C1D2E",
   },
 ]
 

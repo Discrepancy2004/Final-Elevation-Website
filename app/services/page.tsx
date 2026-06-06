@@ -41,18 +41,18 @@ type ServiceEntry = {
 
 const SERVICES: ServiceEntry[] = [
   {
-    title: "Manual Testing",
+    title: "AI Testing Solutions",
     description:
-      "Comprehensive manual testing by experienced QA professionals",
-    icon: ClipboardCheck,
-    href: "/manual_testing",
+      "Leverage AI to generate test plans, scenarios, and cases that integrate with your test management tools and accelerate delivery.",
+    icon: Sparkles,
+    href: "/ai_testing",
     features: [
-      "Functional Testing",
-      "Usability Testing",
-      "Exploratory Testing",
-      "Regression Testing",
-      "User Acceptance Testing",
-      "Cross-browser Testing",
+      "AI-Generated Test Plans",
+      "Automated Test Scenario Design",
+      "Test Case Import & Management",
+      "Coverage Gap Analysis",
+      "Hybrid Manual + AI Workflows",
+      "Accelerated Test Design Cycles",
     ],
   },
   {
@@ -70,6 +70,21 @@ const SERVICES: ServiceEntry[] = [
     ],
   },
   {
+    title: "Manual Testing",
+    description:
+      "Comprehensive manual testing by experienced QA professionals",
+    icon: ClipboardCheck,
+    href: "/manual_testing",
+    features: [
+      "Functional Testing",
+      "Usability Testing",
+      "Exploratory Testing",
+      "Regression Testing",
+      "User Acceptance Testing",
+      "Cross-browser Testing",
+    ],
+  },
+  {
     title: "Accessibility Testing",
     description: "Ensure your applications are usable by everyone",
     icon: Accessibility,
@@ -81,21 +96,6 @@ const SERVICES: ServiceEntry[] = [
       "Color Contrast Validation",
       "ARIA & Semantic HTML Audits",
       "Accessibility Reporting",
-    ],
-  },
-  {
-    title: "Security Testing",
-    description:
-      "Comprehensive security assessment and vulnerability testing",
-    icon: Lock,
-    href: "/security_testing",
-    features: [
-      "Penetration Testing",
-      "Vulnerability Assessment",
-      "Security Code Review",
-      "Authentication Testing",
-      "Data Protection Testing",
-      "Compliance Verification",
     ],
   },
   {
@@ -114,35 +114,6 @@ const SERVICES: ServiceEntry[] = [
     ],
   },
   {
-    title: "Web Testing",
-    description: "Comprehensive web application testing across all browsers",
-    icon: Globe,
-    href: "/contact",
-    features: [
-      "Cross-browser Testing",
-      "Responsive Design Testing",
-      "AI Testing Solutions",
-      "SEO Testing",
-      "Performance Optimization",
-      "Progressive Web App Testing",
-    ],
-  },
-  {
-    title: "AI Testing Solutions",
-    description:
-      "Leverage AI to generate test plans, scenarios, and cases that integrate with your test management tools and accelerate delivery.",
-    icon: Sparkles,
-    href: "/ai_testing",
-    features: [
-      "AI-Generated Test Plans",
-      "Automated Test Scenario Design",
-      "Test Case Import & Management",
-      "Coverage Gap Analysis",
-      "Hybrid Manual + AI Workflows",
-      "Accelerated Test Design Cycles",
-    ],
-  },
-  {
     title: "ETL Testing",
     description:
       "Validate data transformation processes ensuring integrity and accuracy throughout pipelines",
@@ -158,6 +129,36 @@ const SERVICES: ServiceEntry[] = [
     ],
   },
   {
+    title: "Non-Functional Testing",
+    description:
+      "Validate performance, scalability, reliability, and usability before they become production incidents",
+    icon: Gauge,
+    href: "/non_functional_testing",
+    features: [
+      "Performance & Load Testing",
+      "Scalability Testing",
+      "Stress & Endurance Testing",
+      "Reliability Testing",
+      "Usability Testing",
+      "Compatibility Testing",
+    ],
+  },
+  {
+    title: "Security Testing",
+    description:
+      "Comprehensive security assessment and vulnerability testing",
+    icon: Lock,
+    href: "/security_testing",
+    features: [
+      "Penetration Testing",
+      "Vulnerability Assessment",
+      "Security Code Review",
+      "Authentication Testing",
+      "Data Protection Testing",
+      "Compliance Verification",
+    ],
+  },
+  {
     title: "Software QA Outsourcing",
     description:
       "Scale your QA capabilities with dedicated testing teams that integrate seamlessly",
@@ -170,6 +171,20 @@ const SERVICES: ServiceEntry[] = [
       "Knowledge Transfer",
       "Process Integration",
       "Scalable Resources",
+    ],
+  },
+  {
+    title: "Web Testing",
+    description: "Comprehensive web application testing across all browsers",
+    icon: Globe,
+    href: "/contact",
+    features: [
+      "Cross-browser Testing",
+      "Responsive Design Testing",
+      "AI Testing Solutions",
+      "SEO Testing",
+      "Performance Optimization",
+      "Progressive Web App Testing",
     ],
   },
 ]

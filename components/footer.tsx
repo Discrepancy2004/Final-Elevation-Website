@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { SITE_SERVICES } from "@/lib/site-services"
 
 export function Footer() {
   return (
@@ -30,17 +31,7 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-center font-semibold text-white">Services</h4>
             <ul className="space-y-2 text-sm">
-              {[
-                { href: "/automation_testing", label: "Automation Testing" },
-                { href: "/ai_testing", label: "AI Testing Solutions" },
-                { href: "/mobile_testing", label: "Mobile Application" },
-                { href: "/manual_testing", label: "Manual Testing" },
-                { href: "/etl_testing", label: "ETL Testing" },
-                { href: "/qa_outsourcing", label: "Software QA Outsourcing" },
-                { href: "/non_functional_testing", label: "Non-Functional Testing" },
-                { href: "/accessibility_testing", label: "Accessibility Testing" },
-                { href: "/security_testing", label: "Security Testing" },
-              ].map((link) => (
+              {SITE_SERVICES.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
