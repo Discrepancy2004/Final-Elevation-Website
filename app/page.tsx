@@ -107,10 +107,10 @@ export function FeaturesSectionDemo() {
               <FeatureDescription>{feature.description}</FeatureDescription>
               <div
                 className={cn(
-                  "h-full w-full",
+                  "w-full",
                   feature.skeletonOverflow === "visible"
-                    ? "overflow-visible"
-                    : "overflow-hidden"
+                    ? "flex justify-center overflow-visible"
+                    : "h-full overflow-hidden"
                 )}
               >
                 {feature.skeleton}
@@ -281,59 +281,67 @@ export const SkeletonTwo = () => {
 
 export const SkeletonFour = () => {
   return (
-    <div className='relative flex w-full min-h-[320px] flex-col items-center justify-center overflow-visible px-4 py-6 sm:px-6 md:min-h-[400px] md:py-8 lg:min-h-[440px]'>
-      <CobeGlobe className='mx-auto w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px]' />
+    <div className='relative flex w-full items-center justify-center overflow-visible px-6 py-8 md:px-8 md:py-10'>
+      <CobeGlobe className='mx-auto w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[360px]' />
     </div>
   )
 }
 
 export const CobeGlobe = ({ className }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let phi = 0
+    let globe: ReturnType<typeof createGlobe> | null = null
 
-    if (!canvasRef.current) return
+    const canvas = canvasRef.current
+    const container = containerRef.current
+    if (!canvas || !container) return
 
-    const globe = createGlobe(canvasRef.current, {
+    const getSize = () => Math.max(container.offsetWidth, 1)
+
+    globe = createGlobe(canvas, {
       devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
+      width: getSize() * 2,
+      height: getSize() * 2,
       phi: 0,
-      theta: 0,
+      theta: 0.2,
       dark: 1,
       diffuse: 1.2,
-      scale: 0.84,
+      scale: 0.78,
       mapSamples: 16000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
       markers: [
-        // longitude latitude
         { location: [37.7595, -122.4367], size: 0.03 },
         { location: [40.7128, -74.006], size: 0.1 },
       ],
       onRender: (state) => {
-        // Called on every animation frame.
-        // `state` will be an empty object, return updated params.
         state.phi = phi
-        phi += 0.01
+        phi += 0.005
+        const size = getSize()
+        state.width = size * 2
+        state.height = size * 2
       },
     })
 
     return () => {
-      globe.destroy()
+      globe?.destroy()
     }
   }, [])
 
   return (
-    <div className={cn("relative aspect-square w-full overflow-visible", className)}>
-      <canvas
-        ref={canvasRef}
-        className='h-full w-full'
-        style={{ width: "100%", height: "100%" }}
-      />
+    <div
+      ref={containerRef}
+      className={cn(
+        "relative mx-auto aspect-square w-full overflow-visible",
+        className
+      )}
+    >
+      <canvas ref={canvasRef} className='block size-full' />
     </div>
   )
 }
@@ -612,7 +620,7 @@ export default function HomePage() {
             {[
               { value: "3x", label: "Faster Time-to-Market" },
               { value: "99.9%", label: "Bug Detection Rate" },
-              { value: "50+", label: "Expert QA Engineers" },
+              { value: "25+", label: "QA Engineers" },
               { value: "24/7", label: "Support Available" },
             ].map((stat) => (
               <RevealItem key={stat.label}>

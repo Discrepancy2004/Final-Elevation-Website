@@ -1,5 +1,6 @@
 "use client"
 import { cn } from "@/lib/utils"
+import { cinzel } from "@/lib/fonts/cinzel"
 import { IconMenu2, IconX } from "@tabler/icons-react"
 import {
   motion,
@@ -95,7 +96,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "40%" : "100%",
+        width: visible ? "min(92%, 72rem)" : "100%",
         y: visible ? 0 : 0,
       }}
       transition={{
@@ -104,11 +105,11 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       style={{
-        minWidth: "800px",
+        minWidth: visible ? "min(56rem, 100%)" : "800px",
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-        visible ? "justify-between gap-8 px-6" : "justify-between",
+        visible ? "justify-between gap-4 px-4 xl:gap-6 xl:px-6" : "justify-between",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className
       )}
@@ -141,10 +142,10 @@ export const NavItems = ({
         // Don't close dropdown on mouse leave - let the dropdown handle its own visibility
       }}
       className={cn(
-        "hidden flex-row items-center text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex",
+        "hidden flex-row items-center text-base font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 md:text-lg lg:flex",
         visible
-          ? "relative min-w-0 flex-1 justify-between gap-1 px-2"
-          : "absolute inset-0 flex-1 justify-center space-x-2",
+          ? "relative min-w-0 flex-1 justify-between gap-1 px-1 xl:px-2"
+          : "pointer-events-none absolute inset-y-0 left-[min(34%,20rem)] right-[12rem] flex-1 justify-center gap-1 xl:left-[min(36%,22rem)] xl:right-[13rem] xl:gap-2",
         className
       )}
     >
@@ -164,8 +165,8 @@ export const NavItems = ({
           <a
             onClick={onItemClick}
             className={cn(
-              "relative block px-4 py-2 text-neutral-600 dark:text-neutral-300",
-              visible && "whitespace-nowrap px-2"
+              "pointer-events-auto relative block px-4 py-2 text-neutral-600 dark:text-neutral-300",
+              visible && "whitespace-nowrap px-1.5 xl:px-2"
             )}
             href={item.link}
           >
@@ -208,7 +209,14 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         className
       )}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) return child
+        if (typeof child.type === "string") return child
+        return React.cloneElement(
+          child as React.ReactElement<{ visible?: boolean }>,
+          { visible }
+        )
+      })}
     </motion.div>
   )
 }
@@ -216,7 +224,8 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
 export const MobileNavHeader = ({
   children,
   className,
-}: MobileNavHeaderProps) => {
+  visible,
+}: MobileNavHeaderProps & { visible?: boolean }) => {
   return (
     <div
       className={cn(
@@ -224,7 +233,14 @@ export const MobileNavHeader = ({
         className
       )}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) return child
+        if (typeof child.type === "string") return child
+        return React.cloneElement(
+          child as React.ReactElement<{ visible?: boolean }>,
+          { visible }
+        )
+      })}
     </div>
   )
 }
@@ -269,21 +285,58 @@ export const MobileNavToggle = ({
 }
 
 export const NavbarLogo = ({ visible }: { visible?: boolean }) => {
+  const scrolled = Boolean(visible)
+
   return (
     <Link
       href="/"
       className={cn(
-        "relative z-20 flex shrink-0 items-center space-x-2 py-1 text-sm font-normal text-black",
-        visible ? "mr-0 px-2" : "mr-4 px-2"
+        "relative z-30 min-w-0 max-w-[calc(100%-3rem)] shrink-0 sm:max-w-none",
+        scrolled ? "mr-0" : "mr-2 xl:mr-4"
       )}
     >
-      <img
-        src="/images/elevation-logo-green.png?v=2"
-        alt="Elevation Software"
-        className="h-12 w-auto shrink-0 md:h-14"
-      />
-      <span className="font-medium text-black dark:text-white">
-        Elevation Software
+      <span
+        className={cn(
+          "flex items-center gap-3 rounded-[10px] border-[0.5px] py-2 pr-4 pl-2 backdrop-blur-[8px] [-webkit-backdrop-filter:blur(8px)] sm:pr-5",
+          "border-[rgba(201,162,39,0.35)] bg-[rgba(255,252,245,0.88)] shadow-[0_1px_10px_rgba(139,105,20,0.08)]",
+          "dark:border-[rgba(201,162,39,0.2)] dark:bg-[rgba(10,8,4,0.35)] dark:shadow-none"
+        )}
+      >
+        <img
+          src="/images/elevation-logo-stairs.png?v=5"
+          alt="Elevation Software Solutions"
+          className={cn(
+            "shrink-0 object-contain",
+            scrolled
+              ? "h-[4.5rem] w-[4.5rem] md:h-20 md:w-20"
+              : "h-20 w-20 md:h-24 md:w-24"
+          )}
+        />
+        <span
+          className={cn(
+            cinzel.className,
+            "hidden flex-col items-center justify-center border-l-2 border-[#8B6914] pl-[14px] text-center leading-[1.1] sm:flex"
+          )}
+        >
+          <span
+            className={cn(
+              "whitespace-nowrap font-semibold tracking-[0.06em] leading-[1.1] bg-[linear-gradient(90deg,#FFF0A0,#C9A227)] bg-clip-text text-transparent",
+              scrolled ? "text-xl lg:text-2xl" : "text-2xl md:text-3xl"
+            )}
+          >
+            ELEVATION
+          </span>
+          <span
+            className={cn(
+              "whitespace-nowrap font-semibold leading-[1.1] text-[#8B6914] dark:text-[#c9a84c]",
+              scrolled
+                ? "text-xs tracking-[0.18em] lg:text-sm"
+                : "text-sm tracking-[0.2em] md:text-base"
+            )}
+          >
+            SOFTWARE SOLUTIONS
+          </span>
+        </span>
       </span>
     </Link>
   )
@@ -307,7 +360,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center"
+    "px-5 py-2.5 rounded-md bg-white button bg-white text-black text-base font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center md:text-lg"
 
   const variantStyles = {
     primary:

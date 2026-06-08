@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { FooterLegal } from "@/components/footer-legal"
 import { SITE_SERVICES } from "@/lib/site-services"
 
 export function Footer() {
@@ -12,9 +13,8 @@ export function Footer() {
               href="/"
               className="flex items-center justify-center space-x-2"
             >
-              {/* Native img preserves PNG alpha reliably */}
               <img
-                src="/images/elevation-logo-green.png?v=2"
+                src="/images/elevation-logo-stairs.png?v=5"
                 alt="Elevation Software Solutions"
                 className="h-14 w-auto shrink-0 md:h-16"
               />
@@ -78,7 +78,7 @@ export function Footer() {
               </li>
               <li className="flex items-center justify-center gap-2">
                 <MapPin className="h-4 w-4" />
-                Sydney, Australia
+                Melbourne, Australia
               </li>
             </ul>
           </div>
@@ -89,6 +89,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Elevation Software Solutions. All
             rights reserved.
           </p>
+          <FooterLegal />
         </div>
       </div>
     </footer>

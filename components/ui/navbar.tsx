@@ -97,7 +97,7 @@ export function NavbarDemo() {
                     <a
                       key={`desktop-service-${idx}`}
                       href={service.link}
-                      className='flex items-start gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white'
+                      className='flex items-start gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors text-base text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white'
                     >
                       <span className='shrink-0 mt-0.5'>{service.icon}</span>
                       <span className='break-words leading-tight'>{service.name}</span>
@@ -130,7 +130,7 @@ export function NavbarDemo() {
                       onClick={() =>
                         setIsServicesDropdownOpen(!isServicesDropdownOpen)
                       }
-                      className='relative text-neutral-600 dark:text-neutral-300 w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-md'
+                      className='relative w-full px-4 py-2 text-left text-base text-neutral-600 hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800 rounded-md md:text-lg'
                     >
                       <span className='block'>{item.name}</span>
                     </button>
@@ -145,7 +145,7 @@ export function NavbarDemo() {
                                 setIsMobileMenuOpen(false)
                                 setIsServicesDropdownOpen(false)
                               }}
-                              className='flex items-start gap-2 px-3 py-2 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-md'
+                              className='flex items-start gap-2 px-3 py-2 text-base text-neutral-500 hover:bg-gray-50 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 rounded-md'
                             >
                               <span className='shrink-0 mt-0.5'>{service.icon}</span>
                               <span className='break-words leading-tight'>{service.name}</span>
@@ -159,7 +159,7 @@ export function NavbarDemo() {
                   <a
                     href={item.link}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className='relative text-neutral-600 dark:text-neutral-300 block px-4 py-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-md'
+                    className='relative block px-4 py-2 text-base text-neutral-600 hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800 rounded-md md:text-lg'
                   >
                     <span className='block'>{item.name}</span>
                   </a>
@@ -167,13 +167,6 @@ export function NavbarDemo() {
               </div>
             ))}
             <div className='flex w-full flex-col gap-4'>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant='primary'
-                className='w-full'
-              >
-                Login
-              </NavbarButton>
               <NavbarButton
                 href='/contact'
                 onClick={() => setIsMobileMenuOpen(false)}

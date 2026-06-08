@@ -130,7 +130,7 @@ export default function ContactPage() {
                   {
                     icon: MapPin,
                     label: "Location",
-                    lines: ["Sydney, Australia"],
+                    lines: ["Melbourne, Australia"],
                   },
                   {
                     icon: Clock,

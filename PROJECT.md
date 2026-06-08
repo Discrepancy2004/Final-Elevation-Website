@@ -209,7 +209,7 @@ description: Professional software testing and quality assurance for web, mobile
 |-------|--------|
 | 3x | Faster Time-to-Market |
 | 99.9% | Bug Detection Rate |
-| 50+ | Expert QA Engineers |
+| 25+ | QA Engineers |
 | 24/7 | Support Available |
 
 #### Services grid (`HoverEffect` / `projects`)
