@@ -77,9 +77,9 @@ export function NavbarDemo() {
               setIsServicesDropdownOpen(isOpen)
             }
           />
-          <div className='flex shrink-0 items-center'>
-            <NavbarButton variant='primary' href='/contact'>Book a call</NavbarButton>
-          </div>
+          <NavbarButton variant='primary' href='/contact' className='shrink-0'>
+            Book a call
+          </NavbarButton>
         </NavBody>
 
         {/* Services Dropdown for Desktop */}
