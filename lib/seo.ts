@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 export const SITE_NAME = "Elevation Software Solutions"
+export const SITE_LOGO_PATH = "/images/elevation-logo-stairs.png"
 export const SITE_LEGAL_NAME = "Elevation Software Solutions Pty Ltd"
 export const SITE_TAGLINE =
   "Professional software testing and quality assurance services for modern applications."
@@ -74,7 +75,7 @@ type PageSeo = {
 
 export const PAGE_SEO: Record<string, PageSeo> = {
   "/": {
-    title: "QA & Software Testing Services Melbourne",
+    title: SITE_NAME,
     description:
       "Elevation Software Solutions delivers end-to-end QA and software testing in Melbourne — automation, manual, AI, mobile, accessibility, ETL, security, and QA outsourcing for production-ready releases.",
     keywords: [
@@ -145,6 +146,24 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
 }
 
+function buildBrandIcons(): NonNullable<Metadata["icons"]> {
+  return {
+    icon: [{ url: SITE_LOGO_PATH, type: "image/png" }],
+    apple: [{ url: SITE_LOGO_PATH, type: "image/png" }],
+    shortcut: SITE_LOGO_PATH,
+  }
+}
+
+function buildBrandImages() {
+  return [
+    {
+      url: SITE_LOGO_PATH,
+      alt: `${SITE_NAME} logo`,
+      type: "image/png",
+    },
+  ]
+}
+
 export function buildPageMetadata(path: string): Metadata {
   const siteUrl = getSiteUrl()
   const page = PAGE_SEO[path]
@@ -166,6 +185,7 @@ export function buildPageMetadata(path: string): Metadata {
     alternates: {
       canonical,
     },
+    icons: buildBrandIcons(),
     openGraph: {
       type: "website",
       locale: "en_AU",
@@ -174,11 +194,13 @@ export function buildPageMetadata(path: string): Metadata {
       title: `${page.title} | ${SITE_NAME}`,
       description: page.description,
       countryName: SITE_COUNTRY,
+      images: buildBrandImages(),
     },
     twitter: {
       card: "summary_large_image",
       title: `${page.title} | ${SITE_NAME}`,
       description: page.description,
+      images: [SITE_LOGO_PATH],
     },
     robots: {
       index: true,
@@ -201,7 +223,7 @@ export function buildRootMetadata(): Metadata {
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: `${home.title} | ${SITE_NAME}`,
+      default: SITE_NAME,
       template: `%s | ${SITE_NAME}`,
     },
     description: home.description,
@@ -214,19 +236,22 @@ export function buildRootMetadata(): Metadata {
     alternates: {
       canonical: siteUrl,
     },
+    icons: buildBrandIcons(),
     openGraph: {
       type: "website",
       locale: "en_AU",
       url: siteUrl,
       siteName: SITE_NAME,
-      title: `${home.title} | ${SITE_NAME}`,
+      title: SITE_NAME,
       description: home.description,
       countryName: SITE_COUNTRY,
+      images: buildBrandImages(),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${home.title} | ${SITE_NAME}`,
+      title: SITE_NAME,
       description: home.description,
+      images: [SITE_LOGO_PATH],
     },
     robots: {
       index: true,

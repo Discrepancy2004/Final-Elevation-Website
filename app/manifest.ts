@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/seo"
+import { SITE_LOGO_PATH, SITE_NAME, SITE_TAGLINE } from "@/lib/seo"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -13,7 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en-AU",
     icons: [
       {
-        src: "/images/elevation-logo-stairs.png",
+        src: SITE_LOGO_PATH,
         sizes: "512x512",
         type: "image/png",
       },
