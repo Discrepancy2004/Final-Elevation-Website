@@ -11,6 +11,7 @@ import {
 
 import React, { useRef, useState } from "react"
 import Link from "next/link"
+import { SITE_FAVICON_PATH } from "@/lib/seo"
 
 interface NavbarProps {
   children: React.ReactNode
@@ -307,10 +308,10 @@ export const NavbarLogo = ({ visible }: { visible?: boolean }) => {
         )}
       >
         <img
-          src="/images/elevation-logo-stairs.png?v=5"
+          src={`${SITE_FAVICON_PATH}?v=2`}
           alt="Elevation Software Solutions"
           className={cn(
-            "shrink-0 object-contain",
+            "shrink-0 rounded-[6px] object-cover",
             scrolled
               ? "h-11 w-11 md:h-12 md:w-12"
               : "h-20 w-20 md:h-24 md:w-24"

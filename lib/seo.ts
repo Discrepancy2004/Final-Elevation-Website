@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 export const SITE_NAME = "Elevation Software Solutions"
 export const SITE_LOGO_PATH = "/images/elevation-logo-stairs.png"
+export const SITE_FAVICON_PATH = "/images/elevation-logo-square-black.png"
 export const SITE_LEGAL_NAME = "Elevation Software Solutions Pty Ltd"
 export const SITE_TAGLINE =
   "Professional software testing and quality assurance services for modern applications."
