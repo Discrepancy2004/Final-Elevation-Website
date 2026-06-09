@@ -1,14 +1,11 @@
-import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { ThemeProvider } from "next-themes"
+import { StructuredData } from "@/components/seo/structured-data"
+import { buildRootMetadata } from "@/lib/seo"
 import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.dev",
-}
+export const metadata = buildRootMetadata()
 
 export default function RootLayout({
   children,
@@ -16,8 +13,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en-AU" suppressHydrationWarning>
       <head>
+        <StructuredData />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
